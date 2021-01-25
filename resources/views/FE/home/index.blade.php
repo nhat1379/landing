@@ -17,6 +17,6 @@
 
     @include('FE.components.team')
 
-    @include('FE.components.news')
+    @include('FE.home.news')
     
 @endsection

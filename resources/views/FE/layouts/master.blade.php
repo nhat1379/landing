@@ -8,7 +8,7 @@
     <div id="page" class="site">
         @include('FE.layouts.nav')
 
-        @include('FE.layout.side')
+        @include('FE.layouts.side')
 
         <div id="content" class="site-content">
             @yield('content')            

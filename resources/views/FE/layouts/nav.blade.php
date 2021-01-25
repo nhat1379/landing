@@ -32,7 +32,7 @@
                         <div class="octf-col logo-col">
                             <div id="site-logo" class="site-logo">
                                 <a href="index.html">
-                                    <img src="images/home_4_5.svg" alt="Theratio" class="logo-size-small">
+                                    <img src="{{ asset('fe/images/home_4_5.svg') }}" alt="Theratio" class="logo-size-small">
                                 </a>
                             </div>
                         </div>
