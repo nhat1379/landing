@@ -17,6 +17,12 @@ use App\Http\Controllers\AdminController;
 
 Route::prefix('admin')->group(function() {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('be.dashboard');
+
+    Route::match(['get', 'post'], 'menus', [AdminController::class, 'menus'])->name('be.menu');
+
+    Route::match(['get', 'post'], 'configs', [AdminController::class, 'configs'])->name('be.config');
+
+
     
 });
 
