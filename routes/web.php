@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'home'])->name('fe.home');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('fe.about-us');
+Route::get('/contact', [HomeController::class, 'contact'])->name('fe.contact');
+
+Route::prefix('/blogs')->group(function() {
+    Route::get('/', [HomeController::class, 'blogs'])->name('fe.blog.list');
+    Route::get('/{id}', [HomeController::class, 'blog'])->name('fe.blog.detail');
+    Route::get('/{id}', [HomeController::class, 'blogCmt'])->name('fe.blog.cmt');
 });
+
