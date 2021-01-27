@@ -1,11 +1,7 @@
 @extends('BE.layouts.master')
 
 @section('content')
-    @if (session('success_notify'))
-        <div class="alert alert-success">
-            {!! session('success_notify') !!}
-        </div>
-    @endif
+
     <form class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
         @csrf
         <section class="wrapper">
@@ -16,7 +12,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-2">Tiêu đề</label>
                             <div class="col-md-4">
-                                <input type="text" value="{{ $web['big_banner_title'] ?? '' }}" name="big_banner_title" class="form-control" placeholder="Tiêu đề">
+                                <input type="text" value="{{ $home['big_banner_title'] ?? '' }}" name="big_banner_title" class="form-control" placeholder="Tiêu đề">
                             </div>
                         </div>
                         
@@ -24,7 +20,11 @@
                             <div class="col-md-6">
                                 <label class="upload-banner" for="big_banner_image">
                                     <input type="file" name="big_banner_image" id="big_banner_image" class="d-none" onchange="imgUploadPreview(this)">
-                                    <div class="preview"></div>
+                                    <div class="preview">
+                                        @if(!empty($home['big_banner_image']))
+                                            <img src="{{ asset('storage/' . $home['big_banner_image']) }}" alt="" class="upload-banner-preview">                                    
+                                        @endif
+                                    </div>
                                 </label>
                             </div>
                         </div>
@@ -40,15 +40,15 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="col-md-4">
-                        <textarea name="intro1" id="intro1" rows="10" cols="80"></textarea>
+                        <textarea name="intro1" id="intro1" rows="10" cols="80">{!! $home['intro1'] ?? '' !!}</textarea>
                     </div>
 
                     <div class="col-md-4">
-                        <textarea name="intro2" id="intro2" rows="10" cols="80"></textarea>
+                        <textarea name="intro2" id="intro2" rows="10" cols="80">{!! $home['intro2'] ?? '' !!}</textarea>
                     </div>
 
                     <div class="col-md-4">
-                        <textarea name="intro3" id="intro3" rows="10" cols="80"></textarea>
+                        <textarea name="intro3" id="intro3" rows="10" cols="80">{!! $home['intro3'] ?? '' !!}</textarea>
                     </div>
 
                     <script>

@@ -3548,3 +3548,9 @@ ul.chat-available-user li a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.text-white {
+    color: white;
+}
+.text-white-i {
+    color: white !important;
+}

@@ -20,7 +20,23 @@
     
     </section>
     
-    @include('BE.layouts.javascripts')
+    @if (session('success_notify'))
+        <script>
+            notice({
+                title: 'THÀNH CÔNG!',
+                text: '{{ session("success_notify") }}'
+            })
+        </script>
+    @endif
+
+    @if (session('error_notify'))
+        <script>
+            notice({
+                title: 'THẤT BẠI!',
+                text: '{{ session("error_notify") }}'
+            })
+        </script>
+    @endif
 </body>
 
 </html>

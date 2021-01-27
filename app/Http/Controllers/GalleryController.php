@@ -39,7 +39,15 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images');
+        }
+
+        Gallery::create($data);
+        
+        return redirect()->route('be.galleries.index')->with('success_notify', 'Thêm thư viện ảnh thành công!');
     }
 
     /**
@@ -61,7 +69,9 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+
+        return view('BE.gallery.edit', compact('gallery'));
     }
 
     /**
@@ -73,7 +83,17 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+
+        $data = $request->except('_token');
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images');
+        }
+
+        $gallery->fill($data)->save();
+        
+        return redirect()->route('be.galleries.index')->with('success_notify', 'Cập nhật thư viện ảnh thành công!');
     }
 
     /**
@@ -84,6 +104,8 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Gallery::findOrFail($id)->delete();
+
+        return redirect()->route('be.galleries.index')->with('success_notify', 'Xóa thư viện ảnh thành công!');
     }
 }

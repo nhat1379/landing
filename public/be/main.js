@@ -14,3 +14,18 @@ $(document).on('click', '.fileupload-exists', function() {
     upload.find('.fileupload-preview img').attr('src', 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image');
     upload.find('input').val('');
 });
+
+function notice(options = {}) {
+    let { title, text, image, sticky, time, class_name } = options;
+
+    let notice = $.gritter.add({
+        title: title || ' ',
+        text: text || ' ',
+        image: image || '',
+        sticky: sticky || false,
+        time: time || 5000,
+        class_name: class_name || 'my-sticky-class'
+    });
+
+    return false;
+}

@@ -17,12 +17,13 @@
                             <table class="table table-inbox table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Tiêu đề</th>
+                                        <th width="15%">Tiêu đề</th>
                                         <th>Ảnh</th>
-                                        <th>Mô tả</th>
+                                        <th width="40%">Mô tả</th>
                                         <th>Tags</th>
                                         <th>Người tạo</th>
                                         <th>Ngày tạo</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,11 +35,21 @@
                                         @foreach ($items as $item) 
                                             <tr>
                                                 <td>{{ $item->title }}</td>
-                                                <td>{{ $item->thmub }}</td>
-                                                <td>{{ $item->desc }}</td>
+                                                <td>
+                                                    <img src="{{ asset('storage/' . $item->thumb) }}" alt="" style="height: 40px">    
+                                                </td>
+                                                <td>{!! Illuminate\Support\Str::limit($item->desc, 200) !!}</td>
                                                 <td>{{ $item->tags }}</td>
                                                 <td>{{ $item->created_by }}</td>
                                                 <td>{{ $item->created_at }}</td>
+                                                <td>
+                                                    <a class="btn btn-primary text-white-i" href="{{ route('be.blogs.edit', ['blog' => $item->id]) }}">Sửa</a>
+                                                    <form action="{{ route('be.blogs.destroy', ['blog' => $item->id]) }}" method="POST" style="display: inline-block">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button class="btn btn-danger text-white-i">Xóa</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif

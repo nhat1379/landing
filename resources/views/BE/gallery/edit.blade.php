@@ -1,13 +1,18 @@
 @extends('BE.layouts.master')
 
 @section('content')
-    @if (session('success_notify'))
-        <div class="alert alert-success">
-            {!! session('success_notify') !!}
-        </div>
-    @endif
-    <form class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
+   
+    @php
+        $action = $gallery->id ? route('be.galleries.update', ['gallery' => $gallery->id ]) : route('be.galleries.store');
+    @endphp
+
+    <form class="form-horizontal style-form" method="POST" action="{{ $action }}" enctype="multipart/form-data">
         @csrf
+
+        @if ($gallery->id)
+            @method('PUT')
+        @endif
+
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Thêm thư viện ảnh</h3>
             <div class="row mt">
@@ -25,7 +30,7 @@
                             <div class="col-md-4">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="{{ !empty($web['logo']) ? asset('storage/' . $web['logo']) : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' }}" alt="" />
+                                        <img src="{{ $gallery->image ? asset('storage/' . $gallery->image) : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' }}" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail"
                                         style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -33,7 +38,7 @@
                                         <span class="btn btn-theme02 btn-file">
                                             <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
                                             <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                            <input type="file" class="default" name="logo" />
+                                            <input type="file" class="default" name="image" />
                                         </span>
                                         <a href="javascript:;" class="btn btn-theme04 fileupload-exists"
                                             data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Http\Requests\BlogRequest;
 
 class BlogController extends Controller
 {
@@ -37,9 +38,18 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
-        //
+        $data = $request->except('_token');
+
+        $data['created_by'] = 1; //Auth::user()->id;
+        if ($request->hasFile('thumb')) {
+            $data['thumb'] = $request->file('thumb')->store('blogs');
+        }
+
+        Blog::create($data);
+        
+        return redirect()->route('be.blogs.index')->with('success_notify', 'Thêm Blog thành công!');
     }
 
     /**
@@ -61,7 +71,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        return view('BE.blog.edit', compact('blog'));
     }
 
     /**
@@ -71,9 +83,19 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogRequest $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        $data = $request->except('_token');
+
+        if ($request->hasFile('thumb')) {
+            $data['thumb'] = $request->file('thumb')->store('blogs');
+        }
+
+        $blog->fill($data)->save();
+        
+        return redirect()->route('be.blogs.index')->with('success_notify', 'Cập nhật Blog thành công!');
     }
 
     /**
@@ -84,6 +106,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Blog::findOrFail($id)->delete();
+
+        return redirect()->route('be.blogs.index')->with('success_notify', 'Xóa Blog thành công!');
     }
 }

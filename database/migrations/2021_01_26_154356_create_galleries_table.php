@@ -21,6 +21,12 @@ class CreateGalleriesTable extends Migration
             $table->integer('status');
             $table->timestamps();
         });
+
+        Schema::table('galleries', function (Blueprint $table) {
+            $table->string('image')->nullable();
+            $table->integer('is_feature')->default(0);
+            $table->integer('status')->default(1);
+        });
     }
 
     /**
