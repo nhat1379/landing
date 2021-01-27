@@ -14,6 +14,7 @@
 <!--script for this page-->
 <script src="{{ asset('be/lib/sparkline-chart.js') }}"></script>
 <script src="{{ asset('be/lib/zabuto_calendar.js') }}"></script>
+<script src="{{ asset('be/main.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         var unique_id = $.gritter.add({

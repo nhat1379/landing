@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +28,11 @@ Route::prefix('admin')->group(function() {
 
     Route::match(['get', 'post'], 'configs', [AdminController::class, 'configs'])->name('be.config');
 
+    Route::match(['get', 'post'], 'home', [AdminController::class, 'home'])->name('be.config.home');
 
+    Route::resource('galleries', GalleryController::class, ['as' => 'be']);
 
+    Route::resource('blogs', BlogController::class, ['as' => 'be']);
 });
 
 

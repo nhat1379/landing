@@ -57,4 +57,16 @@ class AdminController extends Controller{
     public function menus() {
 
     }
+
+    public function home() {
+        $home = Config::where('name', 'home')->first();
+
+        if ($home) {
+            $home = json_decode($home['value']);
+        }else {
+            $home = [];
+        }
+
+        return view('BE.configs.home', compact('home')); 
+    }
 }

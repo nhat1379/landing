@@ -24,7 +24,7 @@
                 <ul class="sub">
                     <li><a href="{{ route('be.config') }}">Website</a></li>
                     <li><a href="{{ route('be.menu') }}">Menu</a></li>
-                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="{{ route('be.config.home') }}">Trang chủ</a></li>
                 </ul>
             </li>
 
@@ -34,7 +34,7 @@
                     <span>Blogs</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="buttons.html">Danh sách Blog</a></li>
+                    <li><a href="{{ route('be.blogs.index') }}">Danh sách Blog</a></li>
                 </ul>
             </li>
 
@@ -44,7 +44,7 @@
                     <span>Thư viện ảnh</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="buttons.html">Thư viện ảnh</a></li>
+                    <li><a href="{{ route('be.galleries.index') }}">Thư viện ảnh</a></li>
                 </ul>
             </li>
             
