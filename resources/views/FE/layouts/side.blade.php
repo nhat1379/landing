@@ -3,9 +3,9 @@
     <div class="side-panel-block">
         <div class="side-panel-wrap">
             <div class="the-logo">
-                <a href="index-html">
-                    <img src="images/logo-footer.svg" alt="Theratio">
-                </a>                    
+                <a href="{{ route('fe.home') }}">
+                    <img src="{{ asset('fe.images/logo-footer.svg') }}" alt="">
+                </a>
             </div>
             <div class="ot-heading">
                 <h2 class="main-heading">Our Gallery</h2>
@@ -57,30 +57,48 @@
                 </div>
             </div>
             <div class="ot-heading ">
-                <h2 class="main-heading">Contact Info</h2>
+                <h2 class="main-heading">Thông tin liên hệ</h2>
             </div>
             <div class="side-panel-cinfo">
                 <ul class="panel-cinfo">
-                    <li class="panel-list-item">
-                        <span class="panel-list-icon"><i class="ot-flaticon-place"></i></span>
-                        <span class="panel-list-text">411 University St, Seattle, USA</span>
-                    </li>
-                    <li class="panel-list-item">
-                        <span class="panel-list-icon"><i class="ot-flaticon-mail"></i></span>
-                        <span class="panel-list-text">theratio_interior@mail.com</span>
-                    </li>
-                    <li class="panel-list-item">
-                        <span class="panel-list-icon"><i class="ot-flaticon-phone-call"></i></span>
-                        <span class="panel-list-text">+1 800 456 789 123</span>
-                    </li>
+                    @if ($web['address'])
+                        <li class="panel-list-item">
+                            <span class="panel-list-icon"><i class="ot-flaticon-place"></i></span>
+                            <span class="panel-list-text">{{ $web['address'] }}</span>
+                        </li>
+                    @endif
+
+                    @if ($web['email'])
+                        <li class="panel-list-item">
+                            <span class="panel-list-icon"><i class="ot-flaticon-mail"></i></span>
+                            <span class="panel-list-text">{{ $web['email'] }}</span>
+                        </li>
+                    @endif
+
+                    @if ($web['phone'])
+                        <li class="panel-list-item">
+                            <span class="panel-list-icon"><i class="ot-flaticon-phone-call"></i></span>
+                            <span class="panel-list-text">{{ $web['phone'] }}</span>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="side-panel-social">
                 <ul>
-                    <li><a href="http://twitter.com" target="_self"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="http://facebook.com" target="_self"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="http://linkedin.com" target="_self"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="http://instagram" target="_self"><i class="fab fa-instagram"></i></a></li>
+                    @php
+                        $socials = [
+                            'twitter' => 'fa-twitter',
+                            'facebook' => 'fa-facebook-f',
+                            'youtube' => 'fa-youtube',
+                            'instagram' => 'fa-instagram'
+                        ]
+                    @endphp
+
+                    @foreach ($socials as $k => $social)
+                        @if ($web[$k])
+                            <li><a href="{{ $web[$k] }}" target="_self"><i class="fab {{ $social }}"></i></a></li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>

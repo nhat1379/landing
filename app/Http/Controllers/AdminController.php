@@ -55,7 +55,14 @@ class AdminController extends Controller{
     }
 
     public function menus() {
+        $menus = [
+            'home' => ['key' => 'home', 'label' => 'Home', 'ative' => 1],
+            'blog' => ['key' => 'blog', 'label' => 'Blog', 'ative' => 1],
+            'about' => ['key' => 'about', 'label' => 'Về chúng tôi', 'ative' => 1],
+            'contract' => ['key' => 'contract', 'label' => 'Liên hệ', 'ative' => 1]
+        ];
 
+        return view('BE.menus', compact('menus'));
     }
 
     public function home(Request $request) {

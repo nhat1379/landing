@@ -7,17 +7,32 @@
                     <div class="col-md-4 align-self-center">
                         <div class="topbar-socials list-social">
                             <ul>
-                                <li><a href="http://twitter.com" target="_self"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="http://facebook.com" target="_self"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="http://linkedin.com" target="_self"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="http://instagram" target="_self"><i class="fab fa-instagram"></i></a></li>
+                                @php
+                                    $socials = [
+                                        'twitter' => 'fa-twitter',
+                                        'facebook' => 'fa-facebook-f',
+                                        'youtube' => 'fa-youtube',
+                                        'instagram' => 'fa-instagram'
+                                    ]
+                                @endphp
+
+                                @foreach ($socials as $k => $social)
+                                    @if ($web[$k])
+                                        <li><a href="{{ $web[$k] }}" target="_self"><i class="fab {{ $social }}"></i></a></li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <ul class="topbar-info d-flex mb-0 justify-content-end clearfix">
-                            <li><i class="ot-flaticon-place"></i>411 University St, Seattle, USA</li>
-                            <li><a href="mailto:theratio_interior@mail.com"><i class="ot-flaticon-mail"></i>theratio_interior@mail.com</a></li>
+                            @if ($web['address'])
+                                <li><i class="ot-flaticon-place"></i>{{ $web['address'] }}</li>
+                            @endif
+
+                            @if ($web['email'])
+                                <li><a href="{{ $web['email'] }}"><i class="ot-flaticon-mail"></i>{{ $web['email'] }}</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -31,8 +46,13 @@
                     <div class="octf-mainbar-row octf-row">
                         <div class="octf-col logo-col">
                             <div id="site-logo" class="site-logo">
-                                <a href="index.html">
-                                    <img src="{{ asset('fe/images/home_4_5.svg') }}" alt="Theratio" class="logo-size-small">
+                                <a href="{{ route('fe.home') }}">
+                                    @if ($web['logo'])
+                                        <img src="{{ asset('storage/' . $web['logo']) }}" alt="" class="logo-size-small" style="width: auto; height: 60px">
+                                        <div style="display: inline-block; font-size: 30px; color: #bfbebe; font-weight: bold">{{ $web['name'] }}</div>
+                                    @else
+                                        <div style="width: 150px; height: 90px">COMPANY NAME</div>
+                                    @endif
                                 </a>
                             </div>
                         </div>
@@ -61,7 +81,7 @@
                                                 <input type="search" class="search-field" placeholder="Tìm kiếm..." value="" name="s">
                                                 <button type="submit" class="search-submit"><i class="ot-flaticon-search"></i></button>
                                             </form>
-                                        </div>                                  
+                                        </div>
                                     </div>
                                 </div>
 
@@ -71,8 +91,8 @@
                                         <i class="ot-flaticon-menu"></i>
                                     </div>
                                 </div>
-                                
-                            </div>                              
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +123,7 @@
                                     <input type="search" class="search-field" placeholder="Tìm kiếm..." value="" name="s">
                                     <button type="submit" class="search-submit"><i class="ot-flaticon-search"></i></button>
                                 </form>
-                            </div>                                  
+                            </div>
                         </div>
                     </div>
                     <div class="octf-menu-mobile octf-cta-header">

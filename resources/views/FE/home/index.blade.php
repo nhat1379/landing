@@ -1,9 +1,9 @@
 @extends('FE.layouts.master')
 
 
-@section('content') 
+@section('content')
 
-    @include('FE.home.banner')    
+    @include('FE.home.banner')
 
     @include('FE.home.intro')
 
@@ -18,5 +18,5 @@
     @include('FE.components.team')
 
     @include('FE.home.news')
-    
+
 @endsection
