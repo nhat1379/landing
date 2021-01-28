@@ -16,16 +16,10 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image');
-            $table->integer('is_feature');
-            $table->integer('status');
-            $table->timestamps();
-        });
-
-        Schema::table('galleries', function (Blueprint $table) {
             $table->string('image')->nullable();
             $table->integer('is_feature')->default(0);
             $table->integer('status')->default(1);
+            $table->timestamps();
         });
     }
 

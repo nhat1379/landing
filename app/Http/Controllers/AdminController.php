@@ -76,22 +76,26 @@ class AdminController extends Controller{
         }
 
 
-        if ($request->isMethod('post')) {   
+        if ($request->isMethod('post')) {
             $data = $request->except('_token');
-            
+
             if ($request->hasFile('big_banner_image')) {
                 $file = $request->file('big_banner_image');
-                $path = $file->store('images');
-                $data['big_banner_image'] = $path;
+
+                if (strpos($file->getClientMimeType(), 'image/') === false) {
+                    return back()->withInput()->with('error_notify', 'Ảnh sai định dạng');
+                }
+
+                $data['big_banner_image'] = $file->store("logos", "public");
             }
-        
+
             $config->name = 'home';
             $config->value = json_encode($data);
             $config->save();
-            
+
             return back()->with('success_notify', 'Thao tác thành công!');
         }
 
-        return view('BE.configs.home', compact('home')); 
+        return view('BE.configs.home', compact('home'));
     }
 }

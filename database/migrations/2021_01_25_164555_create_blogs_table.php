@@ -23,12 +23,6 @@ class CreateBlogsTable extends Migration
             $table->integer('created_by');
             $table->timestamps();
         });
-
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->string('thumb')->nullable();
-            $table->text('desc')->nullable();
-            $table->string('tags')->nullable();
-        });
     }
 
     /**

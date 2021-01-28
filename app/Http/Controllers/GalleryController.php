@@ -42,11 +42,11 @@ class GalleryController extends Controller
         $data = $request->except('_token');
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images');
+            $data['image'] = $request->file('image')->store('images', 'public');
         }
 
         Gallery::create($data);
-        
+
         return redirect()->route('be.galleries.index')->with('success_notify', 'Thêm thư viện ảnh thành công!');
     }
 
@@ -88,11 +88,11 @@ class GalleryController extends Controller
         $data = $request->except('_token');
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images');
+            $data['image'] = $request->file('image')->store('images', 'public');
         }
 
         $gallery->fill($data)->save();
-        
+
         return redirect()->route('be.galleries.index')->with('success_notify', 'Cập nhật thư viện ảnh thành công!');
     }
 

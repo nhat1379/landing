@@ -44,11 +44,11 @@ class BlogController extends Controller
 
         $data['created_by'] = 1; //Auth::user()->id;
         if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs');
+            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
         }
 
         Blog::create($data);
-        
+
         return redirect()->route('be.blogs.index')->with('success_notify', 'Thêm Blog thành công!');
     }
 
@@ -90,11 +90,11 @@ class BlogController extends Controller
         $data = $request->except('_token');
 
         if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs');
+            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
         }
 
         $blog->fill($data)->save();
-        
+
         return redirect()->route('be.blogs.index')->with('success_notify', 'Cập nhật Blog thành công!');
     }
 
