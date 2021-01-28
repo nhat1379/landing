@@ -61,21 +61,21 @@
             </div>
             <div class="side-panel-cinfo">
                 <ul class="panel-cinfo">
-                    @if ($web['address'])
+                    @if (!empty($web['address']))
                         <li class="panel-list-item">
                             <span class="panel-list-icon"><i class="ot-flaticon-place"></i></span>
                             <span class="panel-list-text">{{ $web['address'] }}</span>
                         </li>
                     @endif
 
-                    @if ($web['email'])
+                    @if (!empty($web['email']))
                         <li class="panel-list-item">
                             <span class="panel-list-icon"><i class="ot-flaticon-mail"></i></span>
                             <span class="panel-list-text">{{ $web['email'] }}</span>
                         </li>
                     @endif
 
-                    @if ($web['phone'])
+                    @if (!empty($web['phone']))
                         <li class="panel-list-item">
                             <span class="panel-list-icon"><i class="ot-flaticon-phone-call"></i></span>
                             <span class="panel-list-text">{{ $web['phone'] }}</span>
@@ -95,7 +95,7 @@
                     @endphp
 
                     @foreach ($socials as $k => $social)
-                        @if ($web[$k])
+                        @if (!empty($web[$k]))
                             <li><a href="{{ $web[$k] }}" target="_self"><i class="fab {{ $social }}"></i></a></li>
                         @endif
                     @endforeach

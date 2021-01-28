@@ -17,7 +17,7 @@
                                 @endphp
 
                                 @foreach ($socials as $k => $social)
-                                    @if ($web[$k])
+                                    @if (!empty($web[$k]))
                                         <li><a href="{{ $web[$k] }}" target="_self"><i class="fab {{ $social }}"></i></a></li>
                                     @endif
                                 @endforeach
@@ -26,11 +26,11 @@
                     </div>
                     <div class="col-md-8">
                         <ul class="topbar-info d-flex mb-0 justify-content-end clearfix">
-                            @if ($web['address'])
+                            @if (!empty($web['address']))
                                 <li><i class="ot-flaticon-place"></i>{{ $web['address'] }}</li>
                             @endif
 
-                            @if ($web['email'])
+                            @if (!empty($web['email']))
                                 <li><a href="{{ $web['email'] }}"><i class="ot-flaticon-mail"></i>{{ $web['email'] }}</a></li>
                             @endif
                         </ul>
@@ -47,11 +47,11 @@
                         <div class="octf-col logo-col">
                             <div id="site-logo" class="site-logo">
                                 <a href="{{ route('fe.home') }}">
-                                    @if ($web['logo'])
+                                    @if (!empty($web['logo']))
                                         <img src="{{ asset('storage/' . $web['logo']) }}" alt="" class="logo-size-small" style="width: auto; height: 60px">
-                                        <div style="display: inline-block; font-size: 30px; color: #bfbebe; font-weight: bold">{{ $web['name'] }}</div>
+                                        <div style="display: inline-block; font-size: 20px; color: #bfbebe; line-height: 60px; font-weight: bold">{{ $web['name'] }}</div>
                                     @else
-                                        <div style="width: 150px; height: 90px">COMPANY NAME</div>
+                                        <div style="width: 150px; height: 60px; line-height: 60px">COMPANY NAME</div>
                                     @endif
                                 </a>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Config;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,14 +26,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $web = Config::where('name', 'website')->first();
+        $config = Config::get()->keyBy('name');
 
-        if (!$web) {
-            $web = [];
-        }else {
-            $web = json_decode($web['value'], true);
+        $web = $home = [];
+
+        if (count($config)) {
+            if (!empty($config['website'])) {
+                $web = json_decode($config['website']['value'], true);
+            }
+            if (!empty($config['home'])) {
+                $home = json_decode($config['home']['value'], true);
+            }
         }
 
+        $galleries = Gallery::latest()->get();
+
         View::share('web', $web);
+        View::share('home', $home);
+        View::share('galleries', $galleries);
     }
 }
