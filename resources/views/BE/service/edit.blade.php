@@ -1,53 +1,36 @@
 @extends('BE.layouts.master')
 
 @section('content')
-
+   
     @php
-        $action = $blog->id ? route('be.blogs.update', ['blog' => $blog->id ]) : route('be.blogs.store');
+        $action = $service->id ? route('be.services.update', ['service' => $service->id ]) : route('be.services.store');
     @endphp
 
     <form class="form-horizontal style-form" method="POST" action="{{ $action }}" enctype="multipart/form-data">
         @csrf
 
-        @if ($blog->id)
+        @if ($service->id)
             @method('PUT')
         @endif
 
         <section class="wrapper">
-            <h3><i class="fa fa-angle-right"></i> Thêm blog</h3>
-
-            @if ($errors->any())
-                
-                @foreach ($errors->all() as $error)
-                    <script>
-                        notice({
-                            text: '{{ $error }}'
-                        })
-                    </script>
-                @endforeach
-                   
-            @endif
-
+            <h3><i class="fa fa-angle-right"></i> Thêm dịch vụ</h3>
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <input type="hidden" name="created_by" value="1">
                         <div class="form-group">
                             <label class="control-label col-md-2">Tiêu đề <sup style="color:red">*</sup></label>
                             <div class="col-md-4">
-                                <input type="text" value="{{ $blog->title }}" name="title" class="form-control" placeholder="Nhập tiêu đề ảnh">
-                                @if ($errors->has('title'))
-                                    <div style="color:red">{{ $errors->first('title') }}</div>
-                                @endif
+                                <input type="text" value="{{ $service->title }}" name="title" class="form-control" placeholder="Nhập tiêu đề" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-2">Ảnh</label>
+                            <label class="control-label col-md-2">Hình ảnh</label>
                             <div class="col-md-4">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="{{ $blog->thumb ? asset('storage/' . $blog->thumb) : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' }}" alt="" />
+                                        <img src="{{ $service->thumb ? asset('storage/' . $service->thumb) : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' }}" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail"
                                         style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -71,38 +54,37 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-2">Mô tả ngắn</label>
+                            <label class="control-label col-md-2">Mô tả <sup style="color:red">*</sup></label>
                             <div class="col-md-10">
-                                <textarea name="desc" id="desc" rows="10" cols="80">{{ $blog->desc }}</textarea>
+                                <textarea name="desc" id="desc" rows="10" cols="80" required>{!! $service->desc !!}</textarea>
+            
+                                <script>
+                                    let ckOpts = {
+                                        language: 'vi',
+                                        toolbarGroups: [
+                                            { "name": "basicstyles", "groups": ["basicstyles"] },
+                                            { "name": "links", "groups": ["links"] },
+                                            { "name": "paragraph", "groups": ["list", "blocks"] },
+                                            { "name": "document", "groups": ["mode"] },
+                                            { "name": "insert", "groups": ["insert"] },
+                                            { "name": "styles", "groups": ["styles"] },
+                                        ],
+                                    }
+            
+                                    CKEDITOR.replace( 'desc', ckOpts);
+                                </script>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-2">Nội dung <sup style="color:red">*</sup></label>
-                            <div class="col-md-10">
-                                <textarea name="content" id="content" rows="10" cols="80">{{ $blog->content }}</textarea>
-                                @if ($errors->has('content'))
-                                    <div style="color:red">{{ $errors->first('content') }}</div>
-                                @endif
+                            <label class="control-label col-md-2">Mô tả</label>
+                            <div class="col-md-4">
+                                <select name="status" id="status" class="form-control">
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Không hoạt động</option>
+                                </select>
                             </div>
                         </div>
-
-                        <script>
-                            let ckOpts = {
-                                language: 'vi',
-                                toolbarGroups: [
-                                    { "name": "basicstyles", "groups": ["basicstyles"] },
-                                    { "name": "links", "groups": ["links"] },
-                                    { "name": "paragraph", "groups": ["list", "blocks"] },
-                                    { "name": "document", "groups": ["mode"] },
-                                    { "name": "insert", "groups": ["insert"] },
-                                    { "name": "styles", "groups": ["styles"] },
-                                ],
-                            }
-    
-                            CKEDITOR.replace( 'desc', ckOpts);
-                            CKEDITOR.replace( 'content', ckOpts);
-                        </script>
                     </div>
                 </div>
             </div>

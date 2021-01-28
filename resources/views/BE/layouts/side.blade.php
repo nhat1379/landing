@@ -31,6 +31,16 @@
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-desktop"></i>
+                    <span>Dịch vụ</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="{{ route('be.services.index') }}">Dịch vụ</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-desktop"></i>
                     <span>Blogs</span>
                 </a>
                 <ul class="sub">
@@ -45,6 +55,16 @@
                 </a>
                 <ul class="sub">
                     <li><a href="{{ route('be.galleries.index') }}">Thư viện ảnh</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-desktop"></i>
+                    <span>Feedback</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="{{ route('be.feedbacks.index') }}">Feedback</a></li>
                 </ul>
             </li>
             

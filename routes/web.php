@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\FeedbackController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +33,17 @@ Route::prefix('admin')->group(function() {
 
     Route::match(['get', 'post'], 'home', [AdminController::class, 'home'])->name('be.config.home');
 
-    Route::resource('galleries', GalleryController::class, ['as' => 'be']);
+    Route::as('be.')->group(function() {
+        Route::resource('galleries', GalleryController::class);
 
-    Route::resource('blogs', BlogController::class, ['as' => 'be']);
+        Route::resource('blogs', BlogController::class);
+    
+        Route::resource('services', ServiceController::class);
+    
+        Route::resource('feedbacks', FeedBackController::class);
+
+    });
+    
 });
 
 

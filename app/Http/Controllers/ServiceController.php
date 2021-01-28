@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
-use App\Http\Requests\BlogRequest;
+use App\Models\Service;
 
-class BlogController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $items = Blog::latest()->get();
+        $items = Service::latest()->get();
 
-        return view('BE.blog.list', compact('items'));
+        return view('BE.service.list', compact('items'));
     }
 
     /**
@@ -27,9 +26,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $blog = new Blog();
+        $service = new Service();
 
-        return view('BE.blog.edit', compact('blog'));
+        return view('BE.service.edit', compact('service'));
     }
 
     /**
@@ -38,17 +37,18 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogRequest $request)
+    public function store(Request $request)
     {
         $data = $request->except('_token');
 
         if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
+            $data['thumb'] = $request->file('thumb')->store('images', 'public');
         }
 
-        Blog::create($data);
+        $service = new Service();
+        $service->fill($data)->save();
 
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Thêm Blog thành công!');
+        return redirect()->route('be.services.index')->with('success_notify', 'Thêm dịch vụ thành công!');
     }
 
     /**
@@ -70,9 +70,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
+        $service = Service::findOrFail($id);
 
-        return view('BE.blog.edit', compact('blog'));
+        return view('BE.service.edit', compact('service'));
     }
 
     /**
@@ -82,19 +82,19 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BlogRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $blog = Blog::findOrFail($id);
+        $service = Service::findOrFail($id);
 
         $data = $request->except('_token');
 
         if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
+            $data['thumb'] = $request->file('thumb')->store('images', 'public');
         }
 
-        $blog->fill($data)->save();
+        $service->fill($data)->save();
 
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Cập nhật Blog thành công!');
+        return redirect()->route('be.services.index')->with('success_notify', 'Cập nhật dịch vụ thành công!');
     }
 
     /**
@@ -105,8 +105,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::findOrFail($id)->delete();
+        Service::findOrFail($id)->delete();
 
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Xóa Blog thành công!');
+        return redirect()->route('be.services.index')->with('success_notify', 'Xóa dịch vụ thành công!');
     }
 }

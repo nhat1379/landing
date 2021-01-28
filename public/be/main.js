@@ -19,7 +19,7 @@ function notice(options = {}) {
     let { title, text, image, sticky, time, class_name } = options;
 
     let notice = $.gritter.add({
-        title: title || ' ',
+        title: title || '',
         text: text || ' ',
         image: image || '',
         sticky: sticky || false,

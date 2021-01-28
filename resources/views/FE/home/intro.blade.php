@@ -39,14 +39,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-12 mb-5 mb-lg-0">
-                {!! $home['intro1'] ?? $default['intro1'] !!}
+                {!! $web['intro1'] ?? $default['intro1'] !!}
             </div>
 
             <div class="col-lg-4 col-md-12">
-                {!! $home['intro2'] ?? $default['intro2'] !!}
+                {!! $web['intro2'] ?? $default['intro2'] !!}
             </div>
             <div class="col-lg-4 col-md-12">
-                {!! $home['intro3'] ?? $default['intro3'] !!}
+                {!! $web['intro3'] ?? $default['intro3'] !!}
             </div>
         </div>
     </div>

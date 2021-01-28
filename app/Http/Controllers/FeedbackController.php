@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
-use App\Http\Requests\BlogRequest;
+use App\Models\Feedback;
 
-class BlogController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $items = Blog::latest()->get();
+        $items = Feedback::latest()->get();
 
-        return view('BE.blog.list', compact('items'));
+        return view('BE.feedback.list', compact('items'));
     }
 
     /**
@@ -27,9 +26,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $blog = new Blog();
+        $feedback = new Feedback();
 
-        return view('BE.blog.edit', compact('blog'));
+        return view('BE.feedback.edit', compact('feedback'));
     }
 
     /**
@@ -38,17 +37,14 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogRequest $request)
+    public function store(Request $request)
     {
         $data = $request->except('_token');
 
-        if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
-        }
+        $feedback = new Feedback();
+        $feedback->fill($data)->save();
 
-        Blog::create($data);
-
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Thêm Blog thành công!');
+        return redirect()->route('be.feedbacks.index')->with('success_notify', 'Thêm Feedback thành công!');
     }
 
     /**
@@ -70,9 +66,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
+        $feedback = Feedback::findOrFail($id);
 
-        return view('BE.blog.edit', compact('blog'));
+        return view('BE.feedback.edit', compact('feedback'));
     }
 
     /**
@@ -82,19 +78,15 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BlogRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $blog = Blog::findOrFail($id);
+        $feedback = Feedback::findOrFail($id);
 
         $data = $request->except('_token');
 
-        if ($request->hasFile('thumb')) {
-            $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
-        }
+        $service->fill($data)->save();
 
-        $blog->fill($data)->save();
-
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Cập nhật Blog thành công!');
+        return redirect()->route('be.feedbacks.index')->with('success_notify', 'Cập nhật Feedback thành công!');
     }
 
     /**
@@ -105,8 +97,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::findOrFail($id)->delete();
+        Feedback::findOrFail($id)->delete();
 
-        return redirect()->route('be.blogs.index')->with('success_notify', 'Xóa Blog thành công!');
+        return redirect()->route('be.feedbacks.index')->with('success_notify', 'Xóa Feedback thành công!');
     }
 }

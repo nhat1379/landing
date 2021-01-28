@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Config;
-use App\Models\Gallery;
+
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,13 +36,10 @@ class AppServiceProvider extends ServiceProvider
             }
             if (!empty($config['home'])) {
                 $home = json_decode($config['home']['value'], true);
+                $web = array_merge($web, $home);
             }
         }
 
-        $galleries = Gallery::latest()->get();
-
         View::share('web', $web);
-        View::share('home', $home);
-        View::share('galleries', $galleries);
     }
 }
