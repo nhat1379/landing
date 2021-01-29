@@ -64,4 +64,8 @@ Route::prefix('blogs')->group(function() {
 
 Route::get('search', [HomeController::class, 'search'])->name('fe.search');
 
+Route::get('about-us', [HomeController::class, 'about'])->name('fe.about');
+
+Route::get('contact', [HomeController::class, 'contact'])->name('fe.contact');
+
 

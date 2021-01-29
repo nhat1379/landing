@@ -30,7 +30,11 @@ class HomeController extends Controller{
     public function blog($id) {
         $blog = Blog::findOrFail($id);
 
-        return view('FE.blogs.detail', compact('blog'));
+        $relates = Blog::inRandomOrder()
+            ->where('id', '!=', $id)
+            ->take(2)->get();
+
+        return view('FE.blogs.detail', compact('blog', 'relates'));
     }
 
     public function blogCmt(Request $request, $id) {
@@ -44,4 +48,12 @@ class HomeController extends Controller{
 
     }
 
+    public function about() {
+        
+        return view('FE.')
+    }
+
+    public function contact() {
+
+    }
 }
