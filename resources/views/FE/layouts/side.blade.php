@@ -7,55 +7,68 @@
                     <img src="{{ asset('fe.images/logo-footer.svg') }}" alt="">
                 </a>
             </div>
-            <div class="ot-heading">
-                <h2 class="main-heading">Our Gallery</h2>
-            </div>
-            <div class="image-gallery">
-                <div id="gallery-1" class="gallery galleryid-102 gallery-columns-3 gallery-size-thumbnail">
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
-                    <figure class="gallery-item">
-                        <div class="gallery-icon landscape">
-                            <a href="https://via.placeholder.com/1440x830.png">
-                                <img src="https://via.placeholder.com/150x150.png" class="" alt="">
-                            </a>
-                        </div>
-                    </figure>
+            @if (count($galleries))
+                <div class="ot-heading">
+                    <h2 class="main-heading">Our Gallery</h2>
                 </div>
-            </div>
+
+                <div class="image-gallery">
+                    <div id="gallery-1" class="gallery galleryid-102 gallery-columns-3 gallery-size-thumbnail">
+                        <div class="row" id="side-gallery">
+                            @foreach ($galleries as $gallery)
+                                @php
+                                    $link = $gallery->is_example ? $gallery->image : asset('storage/' . $gallery->image);
+                                @endphp
+
+                                <figure class=" col-4">
+                                    <div class="gallery-icon landscape">
+                                        <a href="{{ $link }}">
+                                            <img src="{{ $link }}" class="" alt="">
+                                        </a>
+                                    </div>
+                                </figure>
+
+                            @endforeach
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <style>
+                    .gallery.galleryid-102.gallery-columns-3.gallery-size-thumbnail {
+                        display: block;
+                    }
+                    #gallery-1 {
+                        transform: translateX(-10px);
+                    }
+                    #side-gallery {
+                        margin-left: 5px;
+                        margin-right: 5px;
+                    }
+                    #side-gallery .col-4 {
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    #side-gallery .gallery-icon {
+                        width: 100%;
+                        padding-bottom: 100%;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    #side-gallery .gallery-icon a{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    #side-gallery .gallery-icon img{
+                        object-fit: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                </style>
+            @endif
+
             <div class="ot-heading ">
                 <h2 class="main-heading">Thông tin liên hệ</h2>
             </div>

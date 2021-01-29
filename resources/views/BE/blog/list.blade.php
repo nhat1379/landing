@@ -32,15 +32,15 @@
                                             <td colspan="6" class="text-center">Không có dữ liệu</td>
                                         </tr>
                                     @else
-                                        @foreach ($items as $item) 
+                                        @foreach ($items as $item)
                                             <tr>
                                                 <td>{{ $item->title }}</td>
                                                 <td>
-                                                    <img src="{{ asset('storage/' . $item->thumb) }}" alt="" style="height: 40px">    
+                                                    <img src="{{ asset('storage/' . $item->thumb) }}" alt="" style="height: 40px">
                                                 </td>
                                                 <td>{!! Illuminate\Support\Str::limit($item->desc, 200) !!}</td>
                                                 <td>{{ $item->tags }}</td>
-                                                <td>{{ $item->created_by }}</td>
+                                                <td>{{ $item->author->name }}</td>
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>
                                                     <a class="btn btn-primary text-white-i" href="{{ route('be.blogs.edit', ['blog' => $item->id]) }}">Sửa</a>

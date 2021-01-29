@@ -37,13 +37,13 @@ Route::prefix('admin')->group(function() {
         Route::resource('galleries', GalleryController::class);
 
         Route::resource('blogs', BlogController::class);
-    
+
         Route::resource('services', ServiceController::class);
-    
+
         Route::resource('feedbacks', FeedBackController::class);
 
     });
-    
+
 });
 
 
@@ -59,7 +59,9 @@ Route::get('contact', [HomeController::class, 'contact'])->name('fe.contact');
 Route::prefix('blogs')->group(function() {
     Route::get('', [HomeController::class, 'blogs'])->name('fe.blog.list');
     Route::get('{id}', [HomeController::class, 'blog'])->name('fe.blog.detail');
-    Route::get('{id}', [HomeController::class, 'blogCmt'])->name('fe.blog.cmt');
+    Route::post('{id}/comment', [HomeController::class, 'blogCmt'])->name('fe.blog.cmt');
 });
+
+Route::get('search', [HomeController::class, 'search'])->name('fe.search');
 
 

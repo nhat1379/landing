@@ -12,32 +12,36 @@ use App\Models\Blog;
 class HomeController extends Controller{
 
     public function home() {
-        $galleries = Gallery::latest()->take(6)->get();
+
         $services = Service::latest()->get();
         $feedbacks = Feedback::latest()->get();
-        $blogs = Blog::latest()->get();
+        $blogs = Blog::with('author')->latest()->take(3)->get();
 
-        if (count($galleries) < 6) {
-            $count = 6 - count($galleries);
-
-            for ($i = 0; $i < $count; $i++) {
-                $galleries[] = (object) [
-                    'is_example' => 1,
-                    'title' => 'example ' . $i,
-                    'image' => 'https://via.placeholder.com/700x972.png'
-                ];
-            }
-        }
-
-        return view('FE.home.index', compact('galleries', 'services', 'feedbacks', 'blogs'));
+        return view('FE.home.index', compact('services', 'feedbacks', 'blogs'));
     }
 
-    
 
-    
     public function blogs() {
-        return view('FE.layouts.master');
+        $blogs = Blog::with('author')->latest()->paginate(10);
+
+        return view('FE.blogs.list', compact('blogs'));
     }
 
+    public function blog($id) {
+        $blog = Blog::findOrFail($id);
+
+        return view('FE.blogs.detail', compact('blog'));
+    }
+
+    public function blogCmt(Request $request, $id) {
+        $data = $request->except('_token');
+
+        $blog = Blog::findOrFail($id);
+
+    }
+
+    public function search(Request $request) {
+
+    }
 
 }

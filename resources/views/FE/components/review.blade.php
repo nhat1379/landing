@@ -1,4 +1,4 @@
-@if ($feedbacks)
+@if (count($feedbacks))
 
 <section class="testi-4 p-md-0">
     <div class="container-fluid">

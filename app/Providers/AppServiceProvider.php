@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Config;
 
+use App\Models\Gallery;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,6 +41,21 @@ class AppServiceProvider extends ServiceProvider
             }
         }
 
+        $galleries = Gallery::latest()->take(6)->get();
+
+        if (count($galleries) < 6) {
+            $count = 6 - count($galleries);
+
+            for ($i = 0; $i < $count; $i++) {
+                $galleries[] = (object) [
+                    'is_example' => 1,
+                    'title' => 'example ' . $i,
+                    'image' => 'https://via.placeholder.com/700x972.png'
+                ];
+            }
+        }
+
         View::share('web', $web);
+        View::share('galleries', $galleries);
     }
 }

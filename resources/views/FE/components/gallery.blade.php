@@ -5,7 +5,7 @@
 
                 @foreach ($galleries as $k => $gallery)
                     @php
-                    $link = $gallery->is_example ? $gallery->image : asset('storage/' . $gallery->image);
+                      $link = $gallery->is_example ? $gallery->image : asset('storage/' . $gallery->image);
                     @endphp
 
                     <div class="col-md-2">
@@ -18,7 +18,7 @@
                         </figure>
                     </div>
                 @endforeach
-                
+
             </div>
         </div>
     </section>
@@ -48,6 +48,5 @@
             transform: translate(-50%, -50%);
             width: 100%;
         }
-
     </style>
 @endif

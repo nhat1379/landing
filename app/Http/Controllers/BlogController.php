@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $items = Blog::latest()->get();
+        $items = Blog::with('author')->latest()->get();
 
         return view('BE.blog.list', compact('items'));
     }
