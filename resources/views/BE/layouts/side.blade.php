@@ -23,7 +23,7 @@
                 </a>
                 <ul class="sub">
                     <li><a href="{{ route('be.config') }}">Website</a></li>
-                    <li><a href="{{ route('be.menu') }}">Menu</a></li>
+{{--                    <li><a href="{{ route('be.menu') }}">Menu</a></li>--}}
                     <li><a href="{{ route('be.config.home') }}">Trang chủ</a></li>
                 </ul>
             </li>
@@ -67,7 +67,7 @@
                     <li><a href="{{ route('be.feedbacks.index') }}">Feedback</a></li>
                 </ul>
             </li>
-            
+
         </ul>
         <!-- sidebar menu end-->
     </div>

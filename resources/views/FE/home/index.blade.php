@@ -13,9 +13,9 @@
 
     @include('FE.components.review')
 
-    {{-- @include('FE.components.pricing') --}}
+{{--    @include('FE.components.pricing') --}}
 
-    @include('FE.components.team')
+{{--    @include('FE.components.team')--}}
 
     @include('FE.home.news')
 

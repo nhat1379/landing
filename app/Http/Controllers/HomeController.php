@@ -45,7 +45,9 @@ class HomeController extends Controller{
     }
 
     public function search(Request $request) {
+        $blogs = Blog::where('title', 'like', '%'.$request->s.'%')->paginate(10);
 
+        return view('FE.search', compact('blogs'));
     }
 
     public function about() {

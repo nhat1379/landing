@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -20,7 +22,7 @@ use App\Http\Controllers\FeedbackController;
 |
 */
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('', function() {
         return redirect()->route('be.dashboard');
     });
@@ -50,7 +52,9 @@ Route::prefix('admin')->group(function() {
 
 
 
-
+Route::get('login', [AuthController::class, 'login'])->name('fe.login');
+Route::post('login', [AuthController::class, 'authenticate'])->name('fe.login.action');
+Route::get('logout', [AuthController::class, 'logout'])->name('fe.logout');
 
 Route::get('', [HomeController::class, 'home'])->name('fe.home');
 Route::get('about-us', [HomeController::class, 'aboutUs'])->name('fe.about-us');

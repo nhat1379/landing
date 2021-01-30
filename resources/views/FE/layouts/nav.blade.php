@@ -77,7 +77,7 @@
                                     <!-- Form Search on Header -->
                                     <div class="h-search-form-field collapse">
                                         <div class="h-search-form-inner">
-                                            <form role="search" method="get" class="search-form">
+                                            <form role="search" method="get" class="search-form" action="{{ route('fe.search') }}">
                                                 <input type="search" class="search-field" placeholder="Tìm kiếm..." value="" name="s">
                                                 <button type="submit" class="search-submit"><i class="ot-flaticon-search"></i></button>
                                             </form>
@@ -106,7 +106,12 @@
                     <div class="mlogo_wrapper clearfix">
                         <div class="mobile_logo">
                             <a href="{{ route('fe.home') }}">
-                                <img src="images/logo.svg" alt="Theratio">
+                                @if (!empty($web['logo']))
+                                    <img src="{{ asset('storage/' . $web['logo']) }}" alt="" class="logo-size-small" style="width: auto; height: 60px">
+                                    <div style="display: inline-block; font-size: 20px; color: #bfbebe; line-height: 60px; font-weight: bold">{{ $web['name'] }}</div>
+                                @else
+                                    <div style="width: 150px; height: 60px; line-height: 60px">COMPANY NAME</div>
+                                @endif
                             </a>
                         </div>
                     </div>
@@ -119,7 +124,7 @@
                         <!-- Form Search on Header -->
                         <div class="h-search-form-field collapse">
                             <div class="h-search-form-inner">
-                                <form role="search" method="get" class="search-form">
+                                <form role="search" method="get" class="search-form" action="{{ route('fe.search') }}">
                                     <input type="search" class="search-field" placeholder="Tìm kiếm..." value="" name="s">
                                     <button type="submit" class="search-submit"><i class="ot-flaticon-search"></i></button>
                                 </form>

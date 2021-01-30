@@ -20,7 +20,7 @@
                         </div>
                         <div class="content-box">
                             <h5><a href="servcies-detail-1.html">{{ $service->title }}</a></h5>
-                            <p>{!! $service->desc !!}</p>
+                            <p>{!! Illuminate\Support\Str::limit($service->desc, 200, '...') !!}</p>
                         </div>
                         {{-- <div class="link-box">
                             <a href="servcies-detail-1.html" class="btn-details">READ MORE</a>
