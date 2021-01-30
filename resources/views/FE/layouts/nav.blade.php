@@ -61,7 +61,7 @@
                                 <ul class="menu">
                                     <li class="{{ request()->routeIs("fe.home") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.home") }}">Home</a></li>
                                     <li class="{{ request()->routeIs("fe.blog.list") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.blog.list") }}">Blog</a></li>
-                                    <li class="{{ request()->routeIs("fe.about-us") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about-us") }}">Về chúng tôi</a></li>
+                                    <li class="{{ request()->routeIs("fe.about") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about") }}">Về chúng tôi</a></li>
                                     <li class="{{ request()->routeIs("fe.contact") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.contact") }}">Liên hệ</a></li>
                                 </ul>
                             </nav>
@@ -138,7 +138,7 @@
                                     <ul id="menu-main-menu" class="mobile_mainmenu none-style">
                                         <li class="{{ request()->routeIs("fe.home") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.home") }}">Home</a></li>
                                         <li class="{{ request()->routeIs("fe.blog.list") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.blog.list") }}">Blog</a></li>
-                                        <li class="{{ request()->routeIs("fe.about-us") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about-us") }}">Về chúng tôi</a></li>
+                                        <li class="{{ request()->routeIs("fe.about") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about") }}">Về chúng tôi</a></li>
                                         <li class="{{ request()->routeIs("fe.contact") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.contact") }}">Liên hệ</a></li>
                                     </ul>
                                 </div>
