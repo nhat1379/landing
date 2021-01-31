@@ -2,11 +2,14 @@
     <a href="#" class="side-panel-close"><i class="ot-flaticon-close-1"></i></a>
     <div class="side-panel-block">
         <div class="side-panel-wrap">
-            <div class="the-logo">
-                <a href="{{ route('fe.home') }}">
-                    <img src="{{ asset('fe.images/logo-footer.svg') }}" alt="">
-                </a>
-            </div>
+            @if (!empty($web['logo']))
+                <div class="the-logo">
+                    <a href="{{ route('fe.home') }}">
+                        <img src="{{ asset('storage/' . $web['logo']) }}" alt="" style="height:70px;width:auto">
+                    </a>
+                </div>
+            @endif
+
             @if (count($galleries))
                 <div class="ot-heading">
                     <h2 class="main-heading">Our Gallery</h2>

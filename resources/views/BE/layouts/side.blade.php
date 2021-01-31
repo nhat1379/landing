@@ -9,7 +9,30 @@
             </p>
             <h5 class="centered">Nhatdote</h5>
 
-            <li class="mt">
+            @php
+                $menu = App\Libs\Menu::menu();
+            @endphp
+            
+            @foreach ($menu as $k => $item)
+
+                <li class="{{ $k == 0 ? 'mt' : 'sub-menu' }}">
+                    <a class="{{ request()->routeIs($item['active'] ?? []) ? 'active' : '' }}" href="{{ !empty($item['route']) ? route($item['route']) : 'javascript:;' }}">
+                        <i class="{{ $item['icon'] }}"></i>
+                        <span>{{ $item['label'] }}</span>
+                    </a>
+
+                    @if (!empty($item['children']))
+                        <ul class="sub">
+                            @foreach ($item['children'] as $child)
+                                <li class="{{ request()->routeIs($item['active'] ?? []) ? 'active' : '' }}"><a href="{{ route($child['route']) }}">{{ $child['label'] }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+
+            @endforeach
+
+            {{-- <li class="mt">
                 <a class="active" href="index.html">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
@@ -23,7 +46,6 @@
                 </a>
                 <ul class="sub">
                     <li><a href="{{ route('be.config') }}">Website</a></li>
-{{--                    <li><a href="{{ route('be.menu') }}">Menu</a></li>--}}
                     <li><a href="{{ route('be.config.home') }}">Trang chủ</a></li>
                 </ul>
             </li>
@@ -66,7 +88,7 @@
                 <ul class="sub">
                     <li><a href="{{ route('be.feedbacks.index') }}">Feedback</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
         <!-- sidebar menu end-->
