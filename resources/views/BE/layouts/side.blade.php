@@ -7,7 +7,7 @@
                     <img src="{{ asset("be/img/ui-sam.jpg") }}" class="img-circle" width="80">
                 </a>
             </p>
-            <h5 class="centered">Nhatdote</h5>
+            <h5 class="centered">{{ Auth::user()->name }}</h5>
 
             @php
                 $menu = App\Libs\Menu::menu();

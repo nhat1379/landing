@@ -9,7 +9,7 @@ class Menu{
             [
                 'label'     => 'Dashboard', 
                 'route'     => 'be.dashboard',
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-dashboard',
             ],
             [
                 'label'     => 'Thông tin chung', 
@@ -18,35 +18,35 @@ class Menu{
                     ['label' => 'Trang chủ', 'route' => 'be.config.home'],
                     ['label' => 'Dịch vụ', 'route' => 'be.services.index', 'resource' => true]
                 ],
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-info',
             ],
             [
                 'label'     => 'Blogs',
                 'children'  => [
                     ['label' => 'Danh sách Blog', 'route' => 'be.blogs.index', 'resource'  => true]
                 ],
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-rss',
             ],
             [
                 'label'     => 'Thư viện ảnh',
                 'children'  => [
                     ['label' => 'Thư viện ảnh', 'route' => 'be.galleries.index', 'resource'  => true]
                 ],
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-picture-o',
             ],
             [
                 'label'     => 'Feedbacks',
                 'children'  => [
                     ['label' => 'Feedbacks', 'route' => 'be.feedbacks.index', 'resource'  => true]
                 ],
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-commenting-o',
             ],
             [
                 'label'     => 'Thành viên',
                 'children'  => [
                     ['label' => 'Danh sách Thành viên', 'route' => 'be.teams.index', 'resource'  => true]
                 ],
-                'icon'      => 'fa fa-dashboard',
+                'icon'      => 'fa-fw fa fa-users',
             ]
         ];
     }
