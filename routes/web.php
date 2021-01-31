@@ -9,6 +9,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\TeamController;
 
 
 /*
@@ -44,6 +45,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
 
         Route::resource('feedbacks', FeedBackController::class);
 
+        Route::resource('teams', TeamController::class);
     });
 
 });
@@ -71,5 +73,8 @@ Route::get('search', [HomeController::class, 'search'])->name('fe.search');
 Route::get('about-us', [HomeController::class, 'about'])->name('fe.about');
 
 Route::get('contact', [HomeController::class, 'contact'])->name('fe.contact');
+
+Route::get('teams', [HomeController::class, 'teams'])->name('fe.team');
+Route::get('teams/{id}', [HomeController::class, 'team'])->name('fe.team.detail');
 
 

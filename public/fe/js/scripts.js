@@ -1,64 +1,65 @@
-( function( $ ) {
+(function($) {
 
-    $('.woocommerce-form-coupon-toggle .showcoupon').on("click", function(){
-        $(this).toggleClass( "active" );
-        if ($(this).hasClass( "active" )) {
+    $('.woocommerce-form-coupon-toggle .showcoupon').on("click", function() {
+        $(this).toggleClass("active");
+        if ($(this).hasClass("active")) {
             $('.woocommerce-form-coupon').stop(true, true).slideDown();
-        }else{
+        } else {
             $('.woocommerce-form-coupon').stop(true, true).slideUp();
         }
     });
     /* --------------------------------------------------
-    * sticky header
-    * --------------------------------------------------*/
-	$('.header-static .is-fixed').parent().append('<div class="header-clone"></div>');
-	$('.header-clone').height($('#site-header .is-fixed').outerHeight());
-	$('.header-static .header-clone').hide();	
-	$(window).on("scroll", function(){
-		var site_header = $('#site-header').outerHeight() + 1;	
-			
-		if ($(window).scrollTop() >= site_header) {	    	
-			$('.site-header .is-fixed').addClass('is-stuck');	
-			$('.header-static .header-clone').show();	
-		}else {
-			$('.site-header .is-fixed').removeClass('is-stuck');		              
-			$('.header-static .header-clone').hide();
-		}
-	});    /* --------------------------------------------------
-    * mobile menu
-    * --------------------------------------------------*/
-    $('.mmenu_wrapper li:has(ul)').prepend('<span class="arrow"><i class="ot-flaticon-next"></i></span>');
-    $(".mmenu_wrapper .mobile_mainmenu > li span.arrow").on('click',function() {
-        $(this).parent().find("> ul").stop(true, true).slideToggle()
-        $(this).toggleClass( "active" ); 
+     * sticky header
+     * --------------------------------------------------*/
+    $('.header-static .is-fixed').parent().append('<div class="header-clone"></div>');
+    $('.header-clone').height($('#site-header .is-fixed').outerHeight());
+    $('.header-static .header-clone').hide();
+    $(window).on("scroll", function() {
+        var site_header = $('#site-header').outerHeight() + 1;
+
+        if ($(window).scrollTop() >= site_header) {
+            $('.site-header .is-fixed').addClass('is-stuck');
+            $('.header-static .header-clone').show();
+        } else {
+            $('.site-header .is-fixed').removeClass('is-stuck');
+            $('.header-static .header-clone').hide();
+        }
     });
-	
-	$( "#mmenu_toggle" ).on('click', function() {
-		$(this).toggleClass( "active" );
-		$(this).parents('.header_mobile').toggleClass( "open" );
-		if ($(this).hasClass( "active" )) {
-			$('.mobile_nav').stop(true, true).slideDown(100);
-		}else{
-			$('.mobile_nav').stop(true, true).slideUp(100);
-		}		
-	});
+    /* --------------------------------------------------
+     * mobile menu
+     * --------------------------------------------------*/
+    $('.mmenu_wrapper li:has(ul)').prepend('<span class="arrow"><i class="ot-flaticon-next"></i></span>');
+    $(".mmenu_wrapper .mobile_mainmenu > li span.arrow").on('click', function() {
+        $(this).parent().find("> ul").stop(true, true).slideToggle()
+        $(this).toggleClass("active");
+    });
+
+    $("#mmenu_toggle").on('click', function() {
+        $(this).toggleClass("active");
+        $(this).parents('.header_mobile').toggleClass("open");
+        if ($(this).hasClass("active")) {
+            $('.mobile_nav').stop(true, true).slideDown(100);
+        } else {
+            $('.mobile_nav').stop(true, true).slideUp(100);
+        }
+    });
 
     /* ========================================== 
     Search on Header
     ========================================== */
-    $('.toggle_search').on("click", function(){
-        $(this).toggleClass( "active" );
+    $('.toggle_search').on("click", function() {
+        $(this).toggleClass("active");
         $('.h-search-form-field').toggleClass('show');
-        if ($(this).find('i').hasClass( "ot-flaticon-search" )) {
-            $('.toggle_search > i').removeClass( "ot-flaticon-search" ).addClass("ot-flaticon-close-1");
-        }else{
-            $('.toggle_search > i').removeClass( "ot-flaticon-close-1" ).addClass("ot-flaticon-search");
+        if ($(this).find('i').hasClass("ot-flaticon-search")) {
+            $('.toggle_search > i').removeClass("ot-flaticon-search").addClass("ot-flaticon-close-1");
+        } else {
+            $('.toggle_search > i').removeClass("ot-flaticon-close-1").addClass("ot-flaticon-search");
         }
         $('.h-search-form-inner > form > input.search-field').focus();
     });
 
     var element = $('#panel-btn'),
-    sidebar = $('#side-panel');
+        sidebar = $('#side-panel');
 
     function panel_handler() {
         var isActive = !element.hasClass('active');
@@ -72,45 +73,44 @@
     $('#panel-btn, .side-panel-close, .panel-overlay').on('click', panel_handler);
 
 
-  /* --------------------------------------------------
-  * mobile menu
-  * --------------------------------------------------*/
-        var element = $('#mmenu-toggle'),
-            mmenu   = $('#mmenu-wrapper');
+    /* --------------------------------------------------
+     * mobile menu
+     * --------------------------------------------------*/
+    var element = $('#mmenu-toggle'),
+        mmenu = $('#mmenu-wrapper');
 
-        function mmenu_handler() {
-            var isActive = !element.hasClass('active');
+    function mmenu_handler() {
+        var isActive = !element.hasClass('active');
 
-            element.toggleClass('active', isActive);
-            mmenu.toggleClass('mmenu-open', isActive);
-            $('body').toggleClass('mmenu-active', isActive);
-            return false;
-        }
+        element.toggleClass('active', isActive);
+        mmenu.toggleClass('mmenu-open', isActive);
+        $('body').toggleClass('mmenu-active', isActive);
+        return false;
+    }
 
-        $('#mmenu-toggle, .mmenu-close, .mmenu-overlay').on('click', mmenu_handler);
+    $('#mmenu-toggle, .mmenu-close, .mmenu-overlay').on('click', mmenu_handler);
 
-        $('.mmenu-wrapper li:has(ul)').prepend('<span class="arrow"><i class="ot-flaticon-next"></i></span>');
-        $(".mmenu-wrapper .mobile_mainmenu > li span.arrow").on('click',function() {
-            $(this).parent().find("> ul").stop(true, true).slideToggle()
-            $(this).toggleClass( "active" ); 
-        });
+    $('.mmenu-wrapper li:has(ul)').prepend('<span class="arrow"><i class="ot-flaticon-next"></i></span>');
+    $(".mmenu-wrapper .mobile_mainmenu > li span.arrow").on('click', function() {
+        $(this).parent().find("> ul").stop(true, true).slideToggle()
+        $(this).toggleClass("active");
+    });
 
     /* Counter */
     $(window).on('scroll', function() {
         $('.ot-counter').each(function() {
-            var pos_y   = $(this).offset().top - window.innerHeight;
-            var $this   = $(this).find('span.num'),
+            var pos_y = $(this).offset().top - window.innerHeight;
+            var $this = $(this).find('span.num'),
                 countTo = $this.attr('data-to'),
-                during  = parseInt( $this.attr('data-time') ),
+                during = parseInt($this.attr('data-time')),
                 topOfWindow = $(window).scrollTop();
 
-            if ( pos_y < topOfWindow ) {    
+            if (pos_y < topOfWindow) {
                 $({
                     countNum: $this.text()
                 }).animate({
                     countNum: countTo
-                },
-                {
+                }, {
                     duration: during,
                     easing: 'swing',
                     step: function() {
@@ -124,19 +124,18 @@
         });
 
         $('.ot-counter2').each(function() {
-            var pos_y   = $(this).offset().top - window.innerHeight;
-            var $this   = $(this).find('span.num'),
+            var pos_y = $(this).offset().top - window.innerHeight;
+            var $this = $(this).find('span.num'),
                 countTo = $this.attr('data-to'),
-                during  = parseInt( $this.attr('data-time') ),
+                during = parseInt($this.attr('data-time')),
                 topOfWindow = $(window).scrollTop();
 
-            if ( pos_y < topOfWindow ) {    
+            if (pos_y < topOfWindow) {
                 $({
                     countNum: $this.text()
                 }).animate({
                     countNum: countTo
-                },
-                {
+                }, {
                     duration: during,
                     easing: 'swing',
                     step: function() {
@@ -148,7 +147,7 @@
                 });
             }
         });
-        
+
         $('.ot-progress').each(function() {
             var pos_y = $(this).offset().top;
             var value = $(this).find(".progress-bar").data('percent');
@@ -167,13 +166,13 @@
                 percent = bar.find('.ppercent');
             var scrollTop = $(document).scrollTop() + $(window).height();
 
-            if ( scrollTop >  bar.offset().top +  bar.height() ) {
+            if (scrollTop > bar.offset().top + bar.height()) {
                 bar.attr("data-processed", "true");
                 line.css("width", (bar.outerWidth() * (progressEnd / 100)) + "px");
 
                 for (var i = 0; i <= 50; i++) {
-                    (function (count) {
-                        setTimeout(function () {
+                    (function(count) {
+                        setTimeout(function() {
                             percent.html(Math.round((progressEnd / 50) * count) + "%");
                         }, 30 * count);
                     })(i);
@@ -181,19 +180,19 @@
             }
         });
 
-        $('.ot-progress[data-processed]').each(function () {
+        $('.ot-progress[data-processed]').each(function() {
             var bar = $(this);
             var line = bar.find(".progress-bar");
             var progressEnd = parseInt(bar.data('percent'));
 
             line.css("width", (bar.outerWidth() * (progressEnd / 100)) + "px");
-        
+
         });
 
         $('.circle-progress').each(function() {
             var bar_color = $(this).data('color');
-            var bar_hei   = $(this).data('height');
-            var bar_size  = $(this).data('size');
+            var bar_hei = $(this).data('height');
+            var bar_size = $(this).data('size');
             var pos_y = $(this).offset().top;
             var topOfWindow = $(window).scrollTop();
             if (pos_y < topOfWindow + 900) {
@@ -216,21 +215,21 @@
         });
     });
 
-    $('.ot-accordions').each( function () {
+    $('.ot-accordions').each(function() {
         var selector = $(this),
             content = selector.find('.acc-content'),
-            header  = selector.find('.acc-toggle');
+            header = selector.find('.acc-toggle');
 
         header.off("click");
 
-        header.each(function(){
+        header.each(function() {
             if ($(this).data('default') == 'yes') {
                 $(this).next().addClass('active').slideDown(300);
                 $(this).parent().addClass('current');
             }
         });
 
-        header.on('click', function(e){
+        header.on('click', function(e) {
             e.preventDefault();
             var $this = $(this);
 
@@ -243,21 +242,21 @@
 
     $('.ot-tabs').each(function() {
         var selector = $(this),
-            tabs     = selector.find('.tabs-heading li'),
-            content  = selector.find('.tab-content');
+            tabs = selector.find('.tabs-heading li'),
+            content = selector.find('.tab-content');
         tabs.first().addClass('current');
         content.first().addClass('current');
 
-        tabs.on( 'click', function(){
+        tabs.on('click', function() {
             var tab_id = $(this).attr('data-tab');
             $(this).siblings().removeClass('current');
             $(this).parents('.ot-tabs').find('.tab-content').removeClass('current');
             $(this).addClass('current');
-            $("#"+tab_id).addClass('current');
+            $("#" + tab_id).addClass('current');
         });
     });
 
-    $('.service-box').each( function(){
+    $('.service-box').each(function() {
         var selector = $(this),
             imgPopup = selector.find('.image-box > div');
         selector.lightGallery({
@@ -267,19 +266,19 @@
         });
     });
 
-    $('.team-wrap').each( function(){
+    $('.team-wrap').each(function() {
         var selector = $(this).find('.team-social > span');
-        selector.on('click', function(){
+        selector.on('click', function() {
             $(this).parent().toggleClass('active');
         });
     });
 
-    $('.ot-process[data-tab]').each(function(){
+    $('.ot-process[data-tab]').each(function() {
         var selector = $(this);
         selector.find('.process_nav li').first().addClass('current');
         selector.find('.process-des div.process-des-item').hide();
         selector.find('.process-des div.process-des-item').first().show();
-        selector.find('.process_nav li').on( 'click', function(){
+        selector.find('.process_nav li').on('click', function() {
             $(this).parent().find('li').removeClass('current');
             $(this).addClass('current');
             $(this).parents('.ot-process').find('.process-des div.process-des-item').hide();
@@ -289,18 +288,18 @@
         });
     });
 
-    $('.ot-countdown').each( function(){
+    $('.ot-countdown').each(function() {
         var selector = $(this),
-            date     = selector.data('date'),
-            zone     = selector.data('zone'),
-            day      = selector.data('day'),
-            days     = selector.data('days'),
-            hour     = selector.data('hour'),
-            hours    = selector.data('hours'),
-            min      = selector.data('min'),
-            mins     = selector.data('mins'),
-            second   = selector.data('second'),
-            seconds  = selector.data('seconds');
+            date = selector.data('date'),
+            zone = selector.data('zone'),
+            day = selector.data('day'),
+            days = selector.data('days'),
+            hour = selector.data('hour'),
+            hours = selector.data('hours'),
+            min = selector.data('min'),
+            mins = selector.data('mins'),
+            second = selector.data('second'),
+            seconds = selector.data('seconds');
         selector.countdown({
             date: date,
             offset: zone,
@@ -312,44 +311,44 @@
             minutes: mins,
             second: second,
             seconds: seconds
-        }, function () {
+        }, function() {
             alert('Done!');
         });
     });
 
-    $(window).on('load resize', function(){
+    $(window).on('load resize', function() {
         var
-        hero = $('#hero-section'),
-        heroContent = hero.find('.hero-content'),
-        contentHeight = heroContent.height(),
-        sliderHeight = $(window).height(),
-        headerHeight = $('#site-header-wrap').height();
+            hero = $('#hero-section'),
+            heroContent = hero.find('.hero-content'),
+            contentHeight = heroContent.height(),
+            sliderHeight = $(window).height(),
+            headerHeight = $('#site-header-wrap').height();
 
-        if ( $('body').hasClass('header-sticky') )
+        if ($('body').hasClass('header-sticky'))
             headerHeight = headerHeight / 2;
 
         var contentMargin = (sliderHeight - contentHeight - headerHeight) / 2;
 
         hero.css({ height: sliderHeight + "px" });
 
-        heroContent.css({ 
-           "margin-top" : headerHeight + contentMargin + "px",
-           "margin-bottom": contentMargin + "px"
+        heroContent.css({
+            "margin-top": headerHeight + contentMargin + "px",
+            "margin-bottom": contentMargin + "px"
         });
     })
 
-    if ( $().vegas ) {
+    if ($().vegas) {
         $("#hero-section").each(function() {
             var
-            $this = $(this),
-            number = $this.data('number'),
-            number = parseInt(number),
-            effect = $this.data('effect'),
-            i = 1,
-            slides = [];
+                $this = $(this),
+                number = $this.data('number'),
+                number = parseInt(number),
+                effect = $this.data('effect'),
+                i = 1,
+                slides = [];
 
-            while ( i <= number ) {
-                slides.push( {src:$this.data('image-'+i)} );
+            while (i <= number) {
+                slides.push({ src: $this.data('image-' + i) });
                 i++;
             }
 
@@ -364,217 +363,217 @@
     $('a.scroll-target').on('click', function(e) {
         var $anchor = $(this);
         $('html, body').animate({
-            scrollTop: $($anchor.attr('href')).offset().top-0
+            scrollTop: $($anchor.attr('href')).offset().top - 0
         });
         e.preventDefault();
     });
 
     /* Meeage Box */
-    $('.message-box > i').on( 'click', function() {
+    $('.message-box > i').on('click', function() {
         $(this).parent().fadeOut();
     });
 
-    
+
     /*Gallery Post*/
     $(".gallery-post").owlCarousel({
-        items:1,
-        nav:true,
+        items: 1,
+        nav: true,
         dots: false,
         auto: true,
-        loop:true,
+        loop: true,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
         responsive: []
     });
 
     $(".simple-slide").owlCarousel({
-        items:2,
-        nav:true,
+        items: 2,
+        nav: true,
         dots: false,
         auto: true,
-        loop:true,
+        loop: true,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1000:{
-                items:2
+        responsive: {
+            1000: {
+                items: 2
             },
-            767:{
-                nav:false,
+            767: {
+                nav: false,
                 dots: true,
-                items:1
+                items: 1
             },
-            0:{
-                nav:false,
+            0: {
+                nav: false,
                 dots: true,
-                items:1
+                items: 1
             }
         }
     });
 
-     $(".ot-testimonials-slider-s1").owlCarousel({
-        nav:false,
+    $(".ot-testimonials-slider-s1").owlCarousel({
+        nav: false,
         dots: true,
-        loop:true,
+        loop: true,
         margin: 30,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1000:{
-                items:2
+        responsive: {
+            1000: {
+                items: 2
             },
-            767:{
-                items:1
+            767: {
+                items: 1
             },
-            0:{
-                items:1
+            0: {
+                items: 1
             }
         }
-     });
+    });
 
-     $(".testi-col-3").owlCarousel({
-        nav:false,
+    $(".testi-col-3").owlCarousel({
+        nav: false,
         dots: true,
-        loop:true,
+        loop: true,
         margin: 30,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1000:{
-                items:3
+        responsive: {
+            1000: {
+                items: 3
             },
-            767:{
-                items:1
+            767: {
+                items: 1
             },
-            0:{
-                items:1
+            0: {
+                items: 1
             }
         }
-     });
+    });
 
-     $(".testimonials-slide-2").owlCarousel({
-        nav:true,
+    $(".testimonials-slide-2").owlCarousel({
+        nav: true,
         dots: false,
-        loop:true,
+        loop: true,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1000:{
-                items:1
+        responsive: {
+            1000: {
+                items: 1
             },
-            767:{
-                items:1
+            767: {
+                items: 1
             },
-            0:{
-                items:1
+            0: {
+                items: 1
             }
         }
-     });
+    });
 
-     $(".team-slider").owlCarousel({
-        nav:false,
+    $(".team-slider").owlCarousel({
+        nav: false,
         dots: true,
-        loop:true,
+        loop: false,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1200:{
-                items:5
+        responsive: {
+            1200: {
+                items: 5
             },
-            767:{
-                items:2
+            767: {
+                items: 2
             },
-            0:{
-                items:1
+            0: {
+                items: 1
             }
         }
-     });
+    });
 
-     $(".clients-slide").owlCarousel({
-        nav:false,
+    $(".clients-slide").owlCarousel({
+        nav: false,
         dots: false,
-        loop:true,
+        loop: true,
         margin: 140,
         item: 'center',
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1600:{
-                items:6
+        responsive: {
+            1600: {
+                items: 6
             },
-            1200:{
+            1200: {
                 margin: 60,
-                items:6
+                items: 6
             },
-            767:{
+            767: {
                 margin: 60,
                 items: 4
             },
-            0:{
+            0: {
                 margin: 50,
-                items:3
+                items: 3
             }
         }
-     });
+    });
 
-     $(".clients-slide-medium").owlCarousel({
-        nav:false,
+    $(".clients-slide-medium").owlCarousel({
+        nav: false,
         dots: false,
-        loop:true,
+        loop: true,
         margin: 100,
         item: 'center',
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1600:{
-                items:6
+        responsive: {
+            1600: {
+                items: 6
             },
-            1200:{
+            1200: {
                 margin: 60,
-                items:6
+                items: 6
             },
-            767:{
+            767: {
                 margin: 60,
                 items: 4
             },
-            0:{
+            0: {
                 margin: 100,
-                items:2
+                items: 2
             }
         }
-     });
+    });
 
-     $(".project-slider").owlCarousel({
-        nav:false,
+    $(".project-slider").owlCarousel({
+        nav: false,
         dots: true,
-        loop:true,
+        loop: true,
         margin: 30,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1200:{
-                items:3
+        responsive: {
+            1200: {
+                items: 3
             },
-            767:{
-                items:2
+            767: {
+                items: 2
             },
-            0:{
-                items:1
+            0: {
+                items: 1
             }
         }
-     });
+    });
 
-     $(".project-slider-4item").owlCarousel({
-        nav:false,
+    $(".project-slider-4item").owlCarousel({
+        nav: false,
         dots: false,
-        loop:true,
+        loop: true,
         navText: ['<i class="ot-flaticon-left-arrow"></i>', '<i class="ot-flaticon-right-arrow"></i>'],
-        responsive:{
-            1200:{
-                items:4
+        responsive: {
+            1200: {
+                items: 4
             },
-            767:{
-                items:2
+            767: {
+                items: 2
             },
-            0:{
+            0: {
                 dots: true,
-                items:1
+                items: 1
             }
         }
-     });
+    });
 
-     $('.single-product').owlCarousel({
+    $('.single-product').owlCarousel({
         items: 1,
         loop: true,
         dots: false,
@@ -586,11 +585,11 @@
 
 
     /* --------------------------------------------------
-    * image gallery
-    * --------------------------------------------------*/
-    $('.image-gallery').each( function(){
+     * image gallery
+     * --------------------------------------------------*/
+    $('.image-gallery').each(function() {
         var selector = $(this),
-            popup   = selector.find('.gallery-icon > a');
+            popup = selector.find('.gallery-icon > a');
         popup.append('<a href="#" class="overlay"><i class="ot-flaticon-add"></i></a>');
         selector.lightGallery({
             selector: popup,
@@ -599,7 +598,7 @@
         });
     });
 
-    $('.single-product .item ').each( function(){
+    $('.single-product .item ').each(function() {
         var selector = $(this),
             imgPopup = selector.find('> a');
         selector.lightGallery({
@@ -610,23 +609,23 @@
         });
     });
     /* --------------------------------------------------
-    * popup video
-    * --------------------------------------------------*/
+     * popup video
+     * --------------------------------------------------*/
     var video_popup = $('.video-popup');
-    if (video_popup.length > 0 ) {
-        video_popup.each( function(){
+    if (video_popup.length > 0) {
+        video_popup.each(function() {
             $(this).lightGallery({
                 selector: '.video-popup > a',
             });
-        } )
+        })
     }
 
     /* --------------------------------------------------
-    * related projects
-    * --------------------------------------------------*/
-    $('.portfolio-related-posts').each( function () {
+     * related projects
+     * --------------------------------------------------*/
+    $('.portfolio-related-posts').each(function() {
         var selector = $(this);
-        new Swiper( selector, {
+        new Swiper(selector, {
             slidesPerView: 3,
             loop: false,
             speed: 600,
@@ -658,8 +657,8 @@
 
 
     /* --------------------------------------------------
-    * filter projects
-    * --------------------------------------------------*/
+     * filter projects
+     * --------------------------------------------------*/
     function updateFilter() {
         $('.project_filters a').each(function() {
             var data_filter = this.getAttribute('data-filter');
@@ -669,44 +668,44 @@
                 .filter(data_filter).length;
             $(this)
                 .find('.filter-count')
-                .text( num );
-            if ( num != 0 && $(this).hasClass('empty') ) {
+                .text(num);
+            if (num != 0 && $(this).hasClass('empty')) {
                 $(this).removeClass('empty');
             }
         });
     }
-    $('.project-filter-wrapper').each( function(){
-        var $container = $(this).find('.projects-grid'); 
-        $container.isotope({ 
-            itemSelector : '.project-item', 
-            animationEngine : 'css',
+    $('.project-filter-wrapper').each(function() {
+        var $container = $(this).find('.projects-grid');
+        $container.isotope({
+            itemSelector: '.project-item',
+            animationEngine: 'css',
             masonry: {
                 columnWidth: '.grid-sizer'
             },
             layoutMode: 'fitRows',
         });
 
-        var $optionSets  = $(this).find('.project_filters'),
+        var $optionSets = $(this).find('.project_filters'),
             $optionLinks = $optionSets.find('a');
 
-        $optionLinks.on('click', function(){
+        $optionLinks.on('click', function() {
             var $this = $(this);
 
-            if ( $this.hasClass('selected') ) {
+            if ($this.hasClass('selected')) {
                 return false;
             }
             var $optionSet = $this.parents('.project_filters');
-                $optionSet.find('.selected').removeClass('selected');
-                $this.addClass('selected');
+            $optionSet.find('.selected').removeClass('selected');
+            $this.addClass('selected');
 
             var selector = $(this).attr('data-filter');
-                $container.isotope({ 
-                    filter: selector 
-                });
+            $container.isotope({
+                filter: selector
+            });
             return false;
         });
         /* popup gallery */
-        if( $container.hasClass('img-popup') ){
+        if ($container.hasClass('img-popup')) {
             $('.img-popup').lightGallery({
                 selector: '.projects-thumbnail',
                 share: false,
@@ -719,30 +718,30 @@
     });
 
     /* --------------------------------------------------
-    * back to top
-    * --------------------------------------------------*/
+     * back to top
+     * --------------------------------------------------*/
     if ($('#back-to-top').length) {
-	    var scrollTrigger = 500, // px
-	        backToTop = function () {
-	            var scrollTop = $(window).scrollTop();
-	            if (scrollTop > scrollTrigger) {
-	                $('#back-to-top').addClass('show');
-	            } else {
-	                $('#back-to-top').removeClass('show');
-	            }
-	        };
-	    backToTop();
-	    $(window).on('scroll', function () {
-	        backToTop();
-	    });
-	    $('#back-to-top').on('click', function (e) {
-	        e.preventDefault();
-	        $('html,body').animate({
-	            scrollTop: 0
-	        }, 700);
-	    });	
-	}
+        var scrollTrigger = 500, // px
+            backToTop = function() {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            };
+        backToTop();
+        $(window).on('scroll', function() {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function(e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
 
 
 
-} )( jQuery );
+})(jQuery);

@@ -3,7 +3,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <p class="centered">
-                <a href="profile.html">
+                <a href="javascript:;">
                     <img src="{{ asset("be/img/ui-sam.jpg") }}" class="img-circle" width="80">
                 </a>
             </p>
@@ -24,7 +24,7 @@
                     @if (!empty($item['children']))
                         <ul class="sub">
                             @foreach ($item['children'] as $child)
-                                <li class="{{ request()->routeIs($item['active'] ?? []) ? 'active' : '' }}"><a href="{{ route($child['route']) }}">{{ $child['label'] }}</a></li>
+                                <li class="{{ request()->routeIs($child['active'] ?? []) ? 'active' : '' }}"><a href="{{ route($child['route']) }}">{{ $child['label'] }}</a></li>
                             @endforeach
                         </ul>
                     @endif

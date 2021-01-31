@@ -45,6 +45,7 @@ class BlogController extends Controller
         if ($request->hasFile('thumb')) {
             $data['thumb'] = $request->file('thumb')->store('blogs', 'public');
         }
+        $data['created_by'] = Auth::user()->id;
 
         Blog::create($data);
 

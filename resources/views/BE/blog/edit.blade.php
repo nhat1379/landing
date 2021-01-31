@@ -31,7 +31,6 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <input type="hidden" name="created_by" value="1">
                         <div class="form-group">
                             <label class="control-label col-md-2">Tiêu đề <sup style="color:red">*</sup></label>
                             <div class="col-md-4">

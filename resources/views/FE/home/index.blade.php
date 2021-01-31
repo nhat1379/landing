@@ -11,11 +11,11 @@
 
     @include('FE.components.service')
 
-    @include('FE.components.review')
+    @include('FE.components.review_slide')
 
 {{--    @include('FE.components.pricing') --}}
 
-{{--    @include('FE.components.team')--}}
+    @include('FE.components.team')
 
     @include('FE.home.news')
 

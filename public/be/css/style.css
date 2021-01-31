@@ -275,7 +275,7 @@ ul.top-menu>li>.logout {
     height: 17px;
     width: 17px;
     display: inline-block;
-    background: url("../img/nav-expand.png") no-repeat top;
+    /* background: url("../../img/nav-expand.png") no-repeat top; */
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -285,7 +285,7 @@ ul.top-menu>li>.logout {
 }
 
 .active .dcjq-icon {
-    background: url("../img/nav-expand.png") no-repeat bottom;
+    /* background: url("../../img/nav-expand.png") no-repeat bottom; */
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -386,9 +386,7 @@ ul.sidebar-menu li a {
     transition: all 0.3s ease;
 }
 
-ul.sidebar-menu li a.active,
-ul.sidebar-menu li a:hover,
-ul.sidebar-menu li a:focus {
+ul.sidebar-menu>li>a.active {
     background: #4ECDC4;
     color: #fff;
     display: block;

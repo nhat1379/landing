@@ -4808,7 +4808,7 @@ object {
     width: 80px;
     height: 45px;
     z-index: 1;
-    background: url("https://via.placeholder.com/189x150.png") no-repeat center;
+    /* background: url("https://via.placeholder.com/189x150.png") no-repeat center; */
 }
 
 .ot-testimonials .ot-testimonials-slider-s2 .testi-item {
@@ -8318,51 +8318,51 @@ section {
 }
 
 .page-header {
-    background-image: url('https://via.placeholder.com/1920x500.png');
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .page-header-contact {
-    background-image: url('https://via.placeholder.com/1920x500.png');
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-service-detail1 {
-    background-image: url('https://via.placeholder.com/1920x500.png');
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-team {
-    background-image: url('https://via.placeholder.com/1920x500.png');
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-services {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-about {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-process {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-studio {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-typo {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-faq {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-portfolio {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 .pheader-portfolio-detail {
-    background-image: url(https://via.placeholder.com/1920x500.png);
+    background-image: url('../images/blog_bg.jpg');
 }
 
 

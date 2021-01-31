@@ -3,13 +3,13 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
+    <a href="{{ route('fe.home') }}" class="logo"><b><span>{{ $web['name'] ?? 'COMPANY NAME' }}</span></b></a>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
         <ul class="nav top-menu">
             <!-- settings start -->
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                     <i class="fa fa-tasks"></i>
                     <span class="badge bg-theme">4</span>
@@ -79,10 +79,10 @@
                         <a href="#">See All Tasks</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!-- settings end -->
             <!-- inbox dropdown start-->
-            <li id="header_inbox_bar" class="dropdown">
+            {{-- <li id="header_inbox_bar" class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge bg-theme">5</span>
@@ -144,10 +144,10 @@
                         <a href="index.html#">See all messages</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!-- inbox dropdown end -->
             <!-- notification dropdown start-->
-            <li id="header_notification_bar" class="dropdown">
+            {{-- <li id="header_notification_bar" class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                     <i class="fa fa-bell-o"></i>
                     <span class="badge bg-warning">7</span>
@@ -189,7 +189,7 @@
                         <a href="index.html#">See all notifications</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!-- notification dropdown end -->
         </ul>
         <!--  notification end -->

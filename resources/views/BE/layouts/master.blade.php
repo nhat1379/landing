@@ -37,6 +37,16 @@
             })
         </script>
     @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                notice({
+                    text: '{{ $error }}'
+                })
+            </script>
+        @endforeach
+    @endif
 </body>
 
 </html>

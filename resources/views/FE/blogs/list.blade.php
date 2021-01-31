@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="content" class="site-content">
-    <div class="page-header dtable text-center header-transparent" style="background: url({{ asset('fe/images/blog_bg.jpg') }});background-repeat:no-repeat;background-size:cover">
+    <div class="page-header dtable text-center header-transparent">
         <div class="dcell">
             <div class="container">
                 <h1 class="page-title">Danh sách Blog</h1>

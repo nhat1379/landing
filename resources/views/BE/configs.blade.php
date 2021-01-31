@@ -70,13 +70,53 @@
                                     placeholder="Nhập địa chỉ E-mail">
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="wrapper">
+        <section class="wrapper" style="margin-top: 0">
+            <h3><i class="fa fa-angle-right"></i> Thống kê</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="form-panel">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Số lượng khách hàng</label>
+                            <div class="col-md-4">
+                                <input type="text" value="{{ $web['current_client'] ?? '' }}" name="current_client" class="form-control"
+                                    placeholder="Nhập Số lượng khách hàng mà công ty đang có">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Số năm kinh nghiệm</label>
+                            <div class="col-md-4">
+                                <input type="text" value="{{ $web['experience'] ?? '' }}" name="experience" class="form-control"
+                                    placeholder="Nhập Số năm kinh nghiệm của công ty">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Số lượng nhân viên</label>
+                            <div class="col-md-4">
+                                <input type="text" value="{{ $web['current_employee'] ?? '' }}" name="current_employee" class="form-control"
+                                    placeholder="Nhập Số lượng nhân viên">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Số lượng chi nhánh / văn phòng</label>
+                            <div class="col-md-4">
+                                <input type="text" value="{{ $web['current_office'] ?? '' }}" name="current_office" class="form-control"
+                                    placeholder="Nhập Số lượng chi nhánh / văn phòng">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper" style="margin-top: 0">
             <h3><i class="fa fa-angle-right"></i> Mạng xã hội</h3>
             <div class="row mt">
                 <div class="col-lg-12">
@@ -115,7 +155,7 @@
             </div>
         </section>
 
-        <section class="wrapper">
+        <section class="wrapper" style="margin-top: 0">
             <button type="submit" class="btn btn-primary btn-pd-lg">Lưu</button>
         </section>
     </form>

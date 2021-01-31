@@ -1,33 +1,26 @@
 @if (count($feedbacks))
 
-<section class="testi-4 p-md-0">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-6 col-lg-12 px-xl-0">
-                <div class="testi-img-3 text-center" style="height: 100%;position:relative;">
-                    <img src="{{ asset('fe/images/feedbacks.png') }}" alt="" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
-                    <div class="space-40 d-block d-md-none"></div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-12 px-xl-0 mb-5 mb-xl-0 align-self-center">
-                <div class="testi-slide-block-4">
+    <section class="about-testi">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center theratio-align-center">
                     <div class="ot-heading is-dots">
-                        <span>[ Feedbacks ]</span>
+                        <span>[ FEEDBACKS ]</span>
                         <h2 class="main-heading">Khách hàng nói gì về chúng tôi</h2>
                     </div>
-                    <div class="space-20"></div>
-                    <div class="space-5"></div>
+                </div>
+                <div class="col-lg-12">
                     <div class="ot-testimonials v-light">
-                        <div class="testimonials-slide-2 s2 ot-testimonials-slider-s2 owl-theme owl-carousel">
-
+                        <div class="testimonial-inner testi-col-3 owl-theme owl-carousel">
                             @foreach ($feedbacks as $feedback)
                                 <div class="testi-item">
                                     <div class="ttext">
+                                        <div class="layer-behind"></div>
                                         {!! $feedback->content !!}
                                     </div>
                                     <div class="t-head flex-middle">
                                         <div class="tinfo">
-                                            <h5>{{ $feedback->name }}</h5>
+                                            <h6>{{ $feedback->name }}</h6>
                                             <span>{{ $feedback->position }}</span>
                                         </div>
                                     </div>
@@ -38,7 +31,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 @endif
