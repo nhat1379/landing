@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -48,6 +49,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::resource('teams', TeamController::class);
     });
 
+    Route::get('requests', [RequestController::class, 'index'])->name('be.request.index');
 });
 
 
@@ -77,4 +79,5 @@ Route::get('contact', [HomeController::class, 'contact'])->name('fe.contact');
 Route::get('teams', [HomeController::class, 'teams'])->name('fe.team');
 Route::get('teams/{id}', [HomeController::class, 'team'])->name('fe.team.detail');
 
+Route::post('requests/store', [RequestController::class, 'store'])->name('fe.request.store');
 

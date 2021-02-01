@@ -19,4 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("fe/plugins/revolution/revolution/css/settings.css") }}">
     <!-- REVOLUTION NAVIGATION STYLE -->
     <link rel="stylesheet" type="text/css" href="{{ asset("fe/plugins/revolution/revolution/css/navigation.css") }}">
+
+    <script src="{{ asset("fe/js/jquery.min.js") }}"></script>
+
 </head>

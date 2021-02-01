@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 align-self-center text-center mb-5 mb-lg-0">
                     <div class="about-img">
-                        <img src="{{ $web['about_image'] ? asset('storage/' . $web['about_image']) : 'https://via.placeholder.com/623x570.png' }}" alt="">
+                        <img src="{{ !empty($web['about_image']) ? asset('storage/' . $web['about_image']) : 'https://via.placeholder.com/623x570.png' }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 align-self-center">

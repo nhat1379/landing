@@ -5,10 +5,10 @@
         <div class="page-header dtable text-center header-transparent page-header-contact">
             <div class="dcell">
                 <div class="container">
-                    <h1 class="page-title">Contact</h1>
+                    <h1 class="page-title">Liên hệ</h1>
                     <ul id="breadcrumbs" class="breadcrumbs none-style">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Contacts</li>
+                        <li><a href="{{ route('fe.home') }}">Home</a></li>
+                        <li class="active">Liên hệ</li>
                     </ul>
                 </div>
             </div>
@@ -22,9 +22,11 @@
                     <div class="contact-left">
                         <h2>Get in Touch</h2>
                         <p class="font14">Your email address will not be published. Required fields are marked *</p>
-                        <form action="contact.php" method="post" class="wpcf7">
+                        <form action="{{ route('fe.request.store') }}" method="post" class="wpcf7" id="contact-form">
+                            @csrf
                             <div class="main-form">
                                 <p>
+                                    <input type="hidden" name="type" value="contact">
                                     <input type="text" name="name" value="" size="40" class="" aria-invalid="false" placeholder="Your Name *" required>
                                 </p>
                                 <p>
@@ -36,6 +38,24 @@
                                 <p><button type="submit" class="octf-btn">Send Message</button></p>
                             </div>
                         </form>
+
+                        <script>
+                            $('#contact-form').on('submit', function(e) {
+                                e.preventDefault();
+
+                                let formData = $(this).serialize();
+
+                                $.ajax({
+                                    url: $(this).attr('action'),
+                                    method: $(this).attr('method'),
+                                    data: formData,
+                                }).done((res) => {
+                                    alert('Đã gửi yêu cầu');
+                                }).fail(() => {
+                                    alert('Gửi yêu cầu thất bại');
+                                })
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="col-lg-6">
