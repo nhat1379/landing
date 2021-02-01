@@ -21,5 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("fe/plugins/revolution/revolution/css/navigation.css") }}">
 
     <script src="{{ asset("fe/js/jquery.min.js") }}"></script>
+    <script src="{{ asset("fe/js/fe.main.js") }}"></script>
+    <script src="{{ asset('be/ckeditor/ckeditor/ckeditor.js') }}"></script>
 
 </head>

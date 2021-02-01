@@ -20,5 +20,11 @@
     <a id="back-to-top" href="#" class="show"><i class="ot-flaticon-left-arrow"></i></a>
     
     @include('FE.layouts.javascripts')
+
+    @if (session('success_notify'))
+        <script>
+            alert('{{ session('success_notify') }}');
+        </script>
+    @endif
 </body>
 </html>

@@ -7,7 +7,7 @@
                 <div class="container">
                     <h1 class="page-title">Liên hệ</h1>
                     <ul id="breadcrumbs" class="breadcrumbs none-style">
-                        <li><a href="{{ route('fe.home') }}">Home</a></li>
+                        <li><a href="{{ route('fe.home') }}">Trang chủ</a></li>
                         <li class="active">Liên hệ</li>
                     </ul>
                 </div>
@@ -20,8 +20,8 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center mb-5 mb-lg-0">
                     <div class="contact-left">
-                        <h2>Get in Touch</h2>
-                        <p class="font14">Your email address will not be published. Required fields are marked *</p>
+                        <h2>Liên hệ với chúng tôi</h2>
+                        <p class="font14">Điền vào biểu mẫu dưới đây để liên hệ với chúng tôi</p>
                         <form action="{{ route('fe.request.store') }}" method="post" class="wpcf7" id="contact-form">
                             @csrf
                             <div class="main-form">

@@ -60,14 +60,34 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="widget-footer footer-widget-subcribe">
                     <h6>Subscribe</h6>
-                    <form class="mc4wp-form" method="post">
+                    <form class="mc4wp-form" action={{ route('fe.request.store') }} method="post" id="subcribe-form">
+                        @csrf
                         <div class="mc4wp-form-fields">
                             <div class="subscribe-inner-form">
-                                <input type="email" name="EMAIL" placeholder="Nhập Email của bạn" required="">
+                                <input type="email" name="email" placeholder="Nhập Email của bạn" required>
                                 <button type="submit" class="subscribe-btn-icon"><i class="ot-flaticon-send"></i></button>
                             </div>
                         </div>
                     </form>
+
+                    <script>
+                        $('#subcribe-form').on('submit', function(e) {
+                            e.preventDefault();
+                            let formData = $(this).serialize();
+
+                            $.ajax({
+                                url: $(this).attr('action'),
+                                method: $(this).attr('method'),
+                                data: formData
+                            }).done(res => {
+                                alert('Đã gửi yêu cầu theo dõi');
+                                $(this).find('[name="email"]').val('');
+                            }).fail(() => {
+                                alert('Gửi yêu cầu thất bại');
+                            })
+                        });
+                    </script>
+
                     <p>Theo dõi chúng tôi để nhận được thông báo cập nhật mới nhất</p>
                 </div>
             </div>

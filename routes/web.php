@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ShopController;
 
 
 /*
@@ -23,6 +26,11 @@ use App\Http\Controllers\TeamController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('provinces', [Controller::class, 'provinces'])->name('province.list');
+Route::get('districts', [Controller::class, 'districts'])->name('district.list');
+Route::get('wards', [Controller::class, 'wards'])->name('ward.list');
+
 
 Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('', function() {
@@ -50,8 +58,9 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     });
 
     Route::get('requests', [RequestController::class, 'index'])->name('be.request.index');
-});
 
+    Route::get('shop/registers', [ShopController::class, 'index'])->name('be.shop.register.index');
+});
 
 
 
@@ -80,4 +89,8 @@ Route::get('teams', [HomeController::class, 'teams'])->name('fe.team');
 Route::get('teams/{id}', [HomeController::class, 'team'])->name('fe.team.detail');
 
 Route::post('requests/store', [RequestController::class, 'store'])->name('fe.request.store');
+
+Route::get('shop/registers/create', [ShopController::class, 'create'])->name('fe.shop.register.create');
+Route::post('shop/registers/store', [ShopController::class, 'store'])->name('fe.shop.register.store');
+
 
