@@ -63,6 +63,7 @@
                                     <li class="{{ request()->routeIs("fe.blog.list") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.blog.list") }}">Blog</a></li>
                                     <li class="{{ request()->routeIs("fe.about") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about") }}">Về chúng tôi</a></li>
                                     <li class="{{ request()->routeIs("fe.contact") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.contact") }}">Liên hệ</a></li>
+                                    <li class="{{ request()->routeIs("fe.shop.create") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.shop.create") }}">Đăng ký Shop</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -145,6 +146,7 @@
                                         <li class="{{ request()->routeIs("fe.blog.list") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.blog.list") }}">Blog</a></li>
                                         <li class="{{ request()->routeIs("fe.about") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.about") }}">Về chúng tôi</a></li>
                                         <li class="{{ request()->routeIs("fe.contact") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.contact") }}">Liên hệ</a></li>
+                                        <li class="{{ request()->routeIs("fe.shop.create") ? 'current-' : '' }}menu-item"><a href="{{ route("fe.shop.create") }}">Đăng ký Shop</a></li>
                                     </ul>
                                 </div>
                             </div>

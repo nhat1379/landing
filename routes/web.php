@@ -55,11 +55,15 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::resource('feedbacks', FeedBackController::class);
 
         Route::resource('teams', TeamController::class);
+
+        Route::resource('shops', ShopController::class)->except([
+            'create', 'store'    
+        ]);
     });
 
     Route::get('requests', [RequestController::class, 'index'])->name('be.request.index');
+    
 
-    Route::get('shop/registers', [ShopController::class, 'index'])->name('be.shop.register.index');
 });
 
 
@@ -90,7 +94,7 @@ Route::get('teams/{id}', [HomeController::class, 'team'])->name('fe.team.detail'
 
 Route::post('requests/store', [RequestController::class, 'store'])->name('fe.request.store');
 
-Route::get('shop/registers/create', [ShopController::class, 'create'])->name('fe.shop.register.create');
-Route::post('shop/registers/store', [ShopController::class, 'store'])->name('fe.shop.register.store');
+Route::get('shop/create', [ShopController::class, 'create2'])->name('fe.shop.create');
+Route::post('shop/store', [ShopController::class, 'store2'])->name('fe.shop.store');
 
 

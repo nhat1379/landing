@@ -18,7 +18,7 @@
     <section class="register-shop-page">
         <div class="container">
         
-            <form action="{{ route('fe.shop.register.store') }}" method="post" enctype="multipart/form-data" id="shop-register-form">
+            <form action="{{ route('fe.shop.store') }}" method="post" enctype="multipart/form-data" id="shop-register-form">
                 @csrf
                 @foreach ($fields as $k => $field)
                     <div class="form-group row">

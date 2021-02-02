@@ -47,6 +47,13 @@ class Menu{
                     ['label' => 'Danh sách Thành viên', 'route' => 'be.teams.index', 'resource'  => true]
                 ],
                 'icon'      => 'fa-fw fa fa-users',
+            ],
+            [
+                'label'     => 'Shop đăng ký',
+                'children'  => [
+                    ['label' => 'Danh sách Shop', 'route' => 'be.shops.index', 'resource' => true]
+                ],
+                'icon'      => 'fa fa-star'
             ]
         ];
     }

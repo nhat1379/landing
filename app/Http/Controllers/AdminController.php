@@ -2,14 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+use App\Models\Config;
+use App\Models\Blog;
+use App\Models\Gallery;
+use App\Models\Feedback;
+use App\Models\Team;
 
 class AdminController extends Controller{
 
     public function dashboard() {
-        return view('BE.dashboard');
+        $items = [
+            'blog' => [
+                'count' => Blog::count(),
+                'icon' => 'fa fa-rss',
+                'color' => '#8e44ad',
+                'label' => 'Số lượng Blog',
+                'url' => 'be.blogs.index'
+            ],
+            'gallery' => [
+                'count' => Gallery::count(),
+                'icon' => 'fa fa-picture-o',
+                'color' => '#2980b9',
+                'label' => 'Số lượng ảnh',
+                'url' => 'be.galleries.index'
+            ],
+            'feedback' => [
+                'count' => Feedback::count(),
+                'icon' => 'fa fa-commenting-o',
+                'color' => '#e74c3c',
+                'label' => 'Số lượng Feedback',
+                'url' => 'be.feedbacks.index'
+            ],
+            'Team' => [
+                'count' => Team::count(),
+                'icon' => 'fa fa fa-users',
+                'color' => '#16a085',
+                'label' => 'Số lượng nhân viên',
+                'url' => 'be.teams.index'
+            ]
+        ];
+
+        return view('BE.dashboard', compact('items'));
     }
 
     public function configs(Request $request) {
